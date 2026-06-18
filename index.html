@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – kommt bald | CaptLeberkaes</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'><rect x='5' y='70' width='90' height='14' rx='4' fill='%23c4914f'/><path d='M40,36 L66,36 L78,29 L52,29 Z' fill='%236e3c1c'/><path d='M66,36 L78,29 L78,63 L66,70 Z' fill='%237d4220'/><rect x='40' y='36' width='26' height='34' fill='%23e3a98f'/><path d='M40,36 H66 V42 C61,45 56,40 51,43 C46,45 43,41 40,43 Z' fill='%236e3c1c'/><ellipse cx='49' cy='56' rx='2.6' ry='1.8' fill='%23cf8f78'/><ellipse cx='57' cy='61' rx='2' ry='1.4' fill='%23f2c8b4'/><path d='M44,31 C47,26 54,26 57,31 C54,36 47,36 44,31 Z' fill='%235fa03d'/></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%,
+          rgba(247,198,0,0.08) 0%,
+          transparent 65%),
+        #121624;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #e8e8e8;
+    }
+
+    .card {
+      text-align: center;
+      padding: 3rem 4rem;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%,
+          rgba(247,198,0,0.06) 0%,
+          transparent 70%),
+        rgba(18,22,36,0.96);
+      border: 1px solid rgba(247,198,0,0.15);
+      border-radius: 20px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 8px 40px rgba(0, 0, 0, 0.55);
+      max-width: 460px;
+      width: 90%;
+    }
+
+    /* Baustellenband oben */
+    .tape {
+      height: 10px;
+      border-radius: 8px 8px 0 0;
+      margin: -3rem -4rem 2.5rem;
+      background: repeating-linear-gradient(
+        -45deg,
+        #f7c600 0 14px,
+        #1a1a1a 14px 28px
+      );
+    }
+
+    .icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      line-height: 1;
+      filter: drop-shadow(0 2px 8px rgba(247,198,0,0.3));
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .code {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f7c600;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    p {
+      color: #888;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #e8e8e8;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    .back-btn:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="tape"></div>
+    <span class="icon">🚧</span>
+    <span class="code">Baustelle</span>
+    <h1>Hier entsteht ein Portfolio.</h1>
+    <p>Noch nix zu sehen – kommt irgendwann.</p>
+    <a href="../" class="back-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Zurück zum Brotzeitbrettl
+    </a>
+  </div>
+</body>
+</html>
