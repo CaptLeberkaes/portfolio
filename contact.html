@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt — Ben</title>
+  <meta name="description" content="Kontakt aufnehmen — für Projekte, Anstellung oder Fragen.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a08'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%23f5a524' text-anchor='middle'>B</text></svg>">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body data-page="contact">
+  <header id="site-nav"></header>
+
+  <main>
+    <section class="page-head">
+      <div class="glow glow--amber" style="width:520px;height:520px;top:-160px;right:-100px"></div>
+      <div class="frame">
+        <span class="eyebrow"><span data-i18n="ct.eyebrow"></span></span>
+        <h1 data-i18n="ct.title"></h1>
+        <p class="lead" data-i18n="ct.lead"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="frame contact-grid">
+        <!-- Formular (Platzhalter) -->
+        <form id="contact-form" class="reveal" novalidate>
+          <div class="field">
+            <label for="cf-name" data-i18n="ct.form.name"></label>
+            <input id="cf-name" name="name" type="text" required data-i18n-placeholder="ct.form.name">
+          </div>
+          <div class="field">
+            <label for="cf-email" data-i18n="ct.form.email"></label>
+            <input id="cf-email" name="email" type="email" required data-i18n-placeholder="ct.form.email">
+          </div>
+          <div class="field">
+            <label for="cf-msg" data-i18n="ct.form.message"></label>
+            <textarea id="cf-msg" name="message" required data-i18n-placeholder="ct.form.message"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit"><span data-i18n="ct.form.send"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+          <p id="form-status" class="lead" hidden style="color:var(--amber);margin-top:16px;font-size:.9rem">✓ <span>Danke! (Demo – noch nicht angebunden.)</span></p>
+          <p class="lead" style="margin-top:20px;font-size:.82rem;color:var(--ink-faint)" data-i18n="ct.form.note"></p>
+        </form>
+
+        <!-- Direkte Kontaktdaten -->
+        <aside class="contact-info reveal" style="transition-delay:.1s">
+          <div class="row">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div>
+              <div class="k" data-i18n="ct.info.email"></div>
+              <a class="v" href="mailto:jboforever@gmx.de">jboforever@gmx.de</a>
+            </div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <div>
+              <div class="k" data-i18n="ct.info.location"></div>
+              <div class="v" data-i18n="ct.info.location.v"></div>
+            </div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg></span>
+            <div>
+              <div class="k" data-i18n="ct.info.cv"></div>
+              <a class="v" href="files/cv-ben.pdf" download data-i18n="ct.info.cv.v"></a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

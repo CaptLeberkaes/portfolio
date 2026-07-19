@@ -1,0 +1,8 @@
+# Binärdateien nie als Text behandeln (keine Zeilenenden-Konvertierung).
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.pdf  binary
+*.ico  binary

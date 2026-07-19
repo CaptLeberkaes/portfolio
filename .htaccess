@@ -1,0 +1,9 @@
+DirectoryIndex index.php
+
+# WIP-Schutz: Direktaufrufe der HTML-Seiten unterbinden – der Zugang läuft
+# ausschließlich über das Auth-Gate in index.php (?p=about|showcase|contact).
+# Assets (CSS/JS/Bilder) und das CV-PDF bleiben direkt erreichbar.
+<FilesMatch "\.html$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

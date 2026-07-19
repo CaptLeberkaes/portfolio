@@ -1,3 +1,9 @@
+# Geheimnisse – NIEMALS ins Repo
+config.php
+
+# Laufzeitdaten des Auth-Gates
+ratelimit.dat
+
 # OS
 .DS_Store
 Thumbs.db
