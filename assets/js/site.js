@@ -136,7 +136,7 @@
   /* ---------- Galerie-Filter ---------- */
   function initFilters() {
     var buttons = document.querySelectorAll("[data-filter]");
-    var tiles = document.querySelectorAll(".tile[data-cat]");
+    var tiles = document.querySelectorAll("[data-cat]");
     if (!buttons.length) return;
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -152,7 +152,7 @@
 
   /* ---------- Lightbox ---------- */
   function initLightbox() {
-    var tiles = document.querySelectorAll(".tile[data-full]");
+    var tiles = document.querySelectorAll("[data-full]");
     if (!tiles.length) return;
 
     var lb = document.createElement("div");
@@ -170,7 +170,8 @@
       t.setAttribute("tabindex", "0");
       t.setAttribute("role", "button");
       function trigger() {
-        var titleEl = t.querySelector(".tile-title");
+        var scope = t.closest("[data-cat]") || t;
+        var titleEl = scope.querySelector(".tile-title");
         open(t.getAttribute("data-full"), titleEl ? titleEl.textContent : "");
       }
       t.addEventListener("click", trigger);

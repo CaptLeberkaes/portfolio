@@ -36,7 +36,9 @@
 
 /* ---- Reset -------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* Globale Typo-Basis leicht angehoben (16 -> 17px). Alle rem-Größen skalieren
+   dadurch proportional mit – die Schrift wird überall etwas größer. */
+html { font-size: 106.25%; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--bg);
@@ -249,21 +251,28 @@ main { flex: 1 0 auto; }
 .filter:hover { color: var(--ink); }
 .filter[aria-pressed="true"] { background: var(--amber); color: #1a1206; border-color: transparent; font-weight: 600; }
 
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.tile {
-  position: relative; border-radius: var(--radius); overflow: hidden;
-  border: 1px solid var(--line-soft); cursor: pointer; background: var(--bg-elev);
+/* Versetzte Showcase-Zeilen: Bild abwechselnd links / rechts, Text daneben */
+.showcase-rows { display: flex; flex-direction: column; gap: 72px; }
+.show-row { display: flex; align-items: center; gap: 48px; }
+.show-row:nth-child(even) { flex-direction: row-reverse; }
+
+.show-media {
+  flex: 1 1 55%; min-width: 0; position: relative;
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  border: 1px solid var(--line-soft); background: var(--bg-elev);
   aspect-ratio: 4 / 3;
 }
-.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease), filter 0.4s; filter: saturate(0.9) brightness(0.85); }
-.tile:hover img { transform: scale(1.06); filter: saturate(1) brightness(1); }
-.tile-meta {
-  position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px;
-  background: linear-gradient(transparent, rgba(8,6,4,0.92));
-  transform: translateY(8px); opacity: 0; transition: all 0.3s var(--ease);
-}
-.tile:hover .tile-meta, .tile:focus-visible .tile-meta { transform: none; opacity: 1; }
-.tile-cat { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); }
+.show-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease), filter 0.4s; filter: saturate(0.9) brightness(0.85); }
+.show-media:hover img, .show-media:focus-visible img { transform: scale(1.05); filter: saturate(1) brightness(1); }
+
+.show-body { flex: 1 1 45%; min-width: 0; }
+.show-body h3.tile-title { font-size: 1.5rem; font-weight: 700; margin: 8px 0 14px; }
+.show-body p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.7; margin-bottom: 20px; }
+.show-points { list-style: none; display: grid; gap: 12px; }
+.show-points li { position: relative; padding-left: 24px; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.6; }
+.show-points li::before { content: "▹"; position: absolute; left: 0; top: 0; color: var(--amber); }
+
+.tile-cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); }
 .tile-title { font-weight: 600; font-size: 0.98rem; }
 
 /* NDA / Software Case-Study-Karten (ohne Bild) */
@@ -344,8 +353,9 @@ main { flex: 1 0 auto; }
    Responsive
    ========================================================================= */
 @media (max-width: 900px) {
-  .grid--3, .gallery { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .show-row { gap: 32px; }
 }
 @media (max-width: 720px) {
   .frame, .nav-inner, .site-footer .inner { padding-left: 22px; padding-right: 22px; }
@@ -357,7 +367,9 @@ main { flex: 1 0 auto; }
   }
   .nav-links.open a { flex-direction: row; gap: 10px; padding: 10px 0; align-items: baseline; }
   .nav-toggle { display: grid; place-items: center; }
-  .grid--3, .grid--2, .gallery { grid-template-columns: 1fr; }
+  .grid--3, .grid--2 { grid-template-columns: 1fr; }
+  .showcase-rows { gap: 48px; }
+  .show-row, .show-row:nth-child(even) { flex-direction: column; gap: 22px; }
   .hero-bg { width: auto; inset: 0; right: auto; }
   .hero-bg img {
     object-position: 62% center;
