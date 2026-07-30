@@ -33,12 +33,12 @@ window.I18N = {
 
     /* --- Landing: Domänen-Karten --- */
     "home.domains.title": "Was ich mache",
-    "home.d1.title": "3D & Visualisierung",
-    "home.d1.desc": "Rendering, Archviz, VR und Echtzeit in Unreal Engine & 3ds Max.",
-    "home.d2.title": "Software-Entwicklung",
-    "home.d2.desc": "Anwendungen, Tools und Web-Frontends – von der Idee bis zum Deployment.",
-    "home.d3.title": "Interaktiv & Konfiguratoren",
-    "home.d3.desc": "3D-Produktkonfiguratoren im Browser – wo Technik und Bild verschmelzen.",
+    "home.d1.title": "Kreativ & Visualisierung",
+    "home.d1.desc": "Produkt- & Architektur-Rendering, Echtzeit, VR und Fotografie – in Unreal Engine & 3ds Max.",
+    "home.d2.title": "Entwicklung",
+    "home.d2.desc": "Maschinensoftware, Web-Tools und Nutzerführung – von der Idee bis zum Deployment.",
+    "home.d3.title": "Woher ich komme",
+    "home.d3.desc": "Industriemechaniker: Aufbau und Inbetriebnahme grosser Industrieanlagen – die reale Technik hinter allem.",
     "home.more": "Ansehen",
 
     /* --- About --- */
@@ -192,12 +192,12 @@ window.I18N = {
     "home.intro.text": "From hands-on machining through 3D art and real-time visualization to software development. I understand the real engineering behind a product – and build the digital tools and images that bring it to life.",
 
     "home.domains.title": "What I do",
-    "home.d1.title": "3D & Visualization",
-    "home.d1.desc": "Rendering, archviz, VR and real-time in Unreal Engine & 3ds Max.",
-    "home.d2.title": "Software Development",
-    "home.d2.desc": "Applications, tools and web frontends – from idea to deployment.",
-    "home.d3.title": "Interactive & Configurators",
-    "home.d3.desc": "In-browser 3D product configurators – where engineering and image merge.",
+    "home.d1.title": "Creative & Visualization",
+    "home.d1.desc": "Product & architectural rendering, real-time, VR and photography – in Unreal Engine & 3ds Max.",
+    "home.d2.title": "Development",
+    "home.d2.desc": "Machine software, web tools and user experience – from idea to deployment.",
+    "home.d3.title": "Where I come from",
+    "home.d3.desc": "Industrial mechanic: building and commissioning huge industrial plants – the real engineering behind it all.",
     "home.more": "Explore",
 
     "about.eyebrow": "About me",

@@ -133,6 +133,43 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Akzentfarbe an das Umgebungslicht koppeln ----------
+     Der Seiten-Hintergrund verläuft von Orange (oben) nach Teal (unten).
+     Damit Akzent-Elemente (Buttons, "Ansehen →", Eyebrows …) dazu passen,
+     bekommt jeder Block je nach seiner vertikalen Position eine passende
+     --accent-Farbe zwischen Warm und Kühl. Custom Properties vererben,
+     also gilt der Wert automatisch für alle Kinder/Pseudo-Elemente.
+     Rein positionsbasiert — kein Scroll-Listener, kein Scroll-Effekt. */
+  function initAccentGradient() {
+    var WARM = [245, 165, 36];   // --amber
+    var COOL = [62, 199, 187];   // --teal
+    var SEL = ".hero, .page-head, main .section, .card, .case, .tl-item, .site-footer";
+
+    function lerp(a, b, t) { return Math.round(a + (b - a) * t); }
+
+    function apply() {
+      var docH = document.documentElement.scrollHeight || 1;
+      var sy = window.scrollY || window.pageYOffset || 0;
+      document.querySelectorAll(SEL).forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var t = (r.top + sy + r.height / 2) / docH;
+        t = Math.max(0, Math.min(1, t));
+        t = t * t * (3 - 2 * t);   // Smoothstep: Enden kräftiger (oben Orange, unten Teal)
+        el.style.setProperty("--accent",
+          "rgb(" + lerp(WARM[0], COOL[0], t) + "," +
+                   lerp(WARM[1], COOL[1], t) + "," +
+                   lerp(WARM[2], COOL[2], t) + ")");
+      });
+    }
+
+    apply();
+    window.addEventListener("load", apply);            // Bildhöhen final
+    var deb;
+    window.addEventListener("resize", function () {
+      clearTimeout(deb); deb = setTimeout(apply, 150);
+    }, { passive: true });
+  }
+
   /* ---------- Galerie-Filter ---------- */
   function initFilters() {
     var buttons = document.querySelectorAll("[data-filter]");
@@ -199,6 +236,7 @@
     renderFooter();
     applyI18n();     // nach dem Rendern von Nav/Footer, damit deren Keys greifen
     initReveal();
+    initAccentGradient();
     initFilters();
     initLightbox();
     initForm();
