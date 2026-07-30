@@ -19,10 +19,10 @@
   --amber-hi:   #ffc25c;
   --amber-deep: #c9791a;
 
-  /* --- Teal: kühle Gegen-Lichtquelle (dezenter Teal/Orange-Look) ----- */
-  --teal:       #3ec7bb;
-  --teal-hi:    #7ee4db;
-  --teal-deep:  #1c8f86;
+  /* --- Cyan: kühle Gegen-Lichtquelle (dezenter Cyan/Orange-Look) ----- */
+  --teal:       #00aacd;
+  --teal-hi:    #3fd0ea;
+  --teal-deep:  #008ca8;
 
   /* --- Typografie ---------------------------------------------------- */
   --font-display: "Helvetica Neue", "Arial Narrow", system-ui, sans-serif;
@@ -67,14 +67,6 @@ main { flex: 1 0 auto; }
 
 .frame { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; width: 100%; }
 
-/* dezentes indirektes Licht als wiederverwendbares Element */
-.glow {
-  position: absolute; border-radius: 50%; filter: blur(90px);
-  pointer-events: none; z-index: 0;
-}
-.glow--amber { background: radial-gradient(circle, rgba(245,165,36,0.16), transparent 62%); }
-.glow--deep  { background: radial-gradient(circle, rgba(201,121,26,0.14), transparent 65%); }
-
 /* =========================================================================
    Seitenweites Umgebungslicht: Orange oben rechts, Teal unten links.
    Ein einziger Verlauf über die volle Seitenhöhe — dadurch kippt die
@@ -84,8 +76,8 @@ main { flex: 1 0 auto; }
 body::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(65% 65% at 100% 0%,   rgba(245,165,36,0.17), transparent 80%),
-    radial-gradient(65% 65% at 0%   100%, rgba(62,199,187,0.15), transparent 80%);
+    radial-gradient(94% 65% at 100% 0%,   rgba(245,165,36,0.17), transparent 80%),
+    radial-gradient(94% 65% at 0%   100%, rgba(0,140,168,0.15), transparent 80%);
 }
 
 /* =========================================================================
@@ -113,14 +105,12 @@ body::before {
 
 .nav-links { display: flex; align-items: flex-start; gap: 32px; }
 .nav-links a {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex;
   color: var(--ink); text-decoration: none;
-  font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.03em;
+  font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.03em;
   transition: color 0.2s var(--ease);
 }
-.nav-links a .num { font-size: 0.6rem; color: var(--ink-faint); letter-spacing: 0.1em; padding-left: 20px; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--amber); }
-.nav-links a:hover .num, .nav-links a[aria-current="page"] .num { color: var(--amber-deep); }
 
 .nav-right { display: flex; align-items: center; gap: 16px; }
 .lang { display: inline-flex; border: 1px solid var(--line-soft); border-radius: 999px; padding: 3px; font-family: var(--font-mono); font-size: 0.72rem; }
@@ -138,9 +128,12 @@ body::before {
   font-size: 0.92rem; font-weight: 500; letter-spacing: 0.01em;
   padding: 13px 22px; border-radius: var(--radius-sm); cursor: pointer;
   text-decoration: none; border: 1px solid transparent; transition: all 0.2s var(--ease);
+  /* Damit .btn auf <button> genauso aussieht wie auf <a>: sonst setzt der
+     Browser dort seine eigene helle Fläche und Systemschrift ein. */
+  appearance: none; background: none; color: inherit; font-family: inherit;
 }
 .btn svg { width: 15px; height: 15px; }
-.btn--primary { background: var(--accent, var(--amber)); color: #1a1206; font-weight: 600; box-shadow: 0 8px 30px rgba(245,165,36,0.20); }
+.btn--primary { background: var(--accent, var(--amber)); color: #1a1206; font-weight: 600; }
 .btn--primary:hover { background: var(--amber-hi); transform: translateY(-1px); }
 .btn--ghost { color: var(--ink); border-color: var(--line); }
 .btn--ghost:hover { border-color: var(--amber); color: var(--amber-hi); }
@@ -150,7 +143,7 @@ body::before {
    ========================================================================= */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em;
+  font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--accent, var(--amber)); margin-bottom: 16px;
 }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent, var(--amber)); box-shadow: 0 0 12px var(--accent, var(--amber)); animation: pulse 2.6s infinite; }
@@ -165,13 +158,17 @@ body::before {
 
 .section { padding: clamp(72px, 10vw, 130px) 0; position: relative; }
 .section + .section { border-top: 1px solid var(--line-soft); }
+#domains { padding-top: clamp(40px, 5vw, 64px); }
+#domains .section-title { margin-bottom: 48px; }
+body[data-page="showcase"] .section + .section,
+body[data-page="about"] .section + .section { border-top: none; }
 
 /* =========================================================================
    HERO (Landing)
    ========================================================================= */
 .hero {
   position: relative; min-height: calc(100vh - var(--nav-h));
-  display: grid; align-items: center; overflow: hidden;
+  display: grid; grid-template-columns: 1fr; align-items: center; overflow: hidden;
 }
 .hero-bg { position: absolute; top: 0; right: 0; bottom: 0; width: min(50%, 640px); z-index: 0; }
 .hero-bg img {
@@ -211,7 +208,7 @@ body::before {
 @keyframes wheel { 0%{opacity:0; transform:translate(-50%,0)} 40%{opacity:1} 100%{opacity:0; transform:translate(-50%,10px)} }
 
 /* kleiner Seiten-Header für Unterseiten */
-.page-head { position: relative; padding: clamp(96px, 12vw, 150px) 0 clamp(40px, 6vw, 70px); overflow: hidden; }
+.page-head { position: relative; padding: clamp(64px, 8vw, 104px) 0 clamp(40px, 6vw, 70px); overflow: hidden; }
 .page-head h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -0.01em; margin-bottom: 14px; }
 
 /* =========================================================================
@@ -264,7 +261,9 @@ body::before {
   box-shadow: 0 6px 16px rgba(0,0,0,0.55);
   filter: saturate(0.95);
 }
-/* wild verstreut, wie auf den Boden geworfene Fotos */
+/* Wild verstreut, wie auf den Boden geworfene Fotos.
+   Fallback ohne JS — initScatter() in site.js würfelt diese Plätze bei jedem
+   Aufruf neu durch und überschreibt die Werte per Inline-Style. */
 .card-scatter img:nth-child(1) { top:  4%; left: 10%; width: 24%; transform: rotate(-17deg); z-index: 3; }
 .card-scatter img:nth-child(2) { top: 10%; left: 33%; width: 20%; transform: rotate(9deg);   z-index: 6; }
 .card-scatter img:nth-child(3) { top:  2%; right: 8%; width: 23%; transform: rotate(21deg);  z-index: 2; }
@@ -319,8 +318,14 @@ body::before {
   font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.02em;
   color: var(--ink-soft); border: 1px solid var(--line-soft); border-radius: 999px;
   padding: 7px 14px; background: var(--bg-elev);
+  text-decoration: none;
 }
 .chip.is-strong { color: var(--accent, var(--amber)); border-color: var(--line); }
+
+.skills-note {
+  margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint);
+}
 
 /* =========================================================================
    Showcase-Galerie + Lightbox
@@ -344,17 +349,44 @@ body::before {
 
 /* Versetzte Showcase-Zeilen: Bild abwechselnd links / rechts, Text daneben */
 .showcase-rows { display: flex; flex-direction: column; gap: 72px; }
-.show-row { display: flex; align-items: center; gap: 48px; }
-.show-row:nth-child(even) { flex-direction: row-reverse; }
+.show-row {
+  display: grid; align-items: center;
+  grid-template-columns: 55fr 45fr;
+  grid-template-areas: "media body" "thumbs thumbs";
+  column-gap: 48px; row-gap: 18px;
+}
+.show-row:nth-child(even) {
+  grid-template-columns: 45fr 55fr;
+  grid-template-areas: "body media" "thumbs thumbs";
+}
+/* Zeilen ohne Thumbnail-Leiste (z. B. Video): nur eine Grid-Zeile, keine Leerspur */
+.show-row:not(:has(.show-thumbs)) { grid-template-areas: "media body"; }
+.show-row:nth-child(even):not(:has(.show-thumbs)) { grid-template-areas: "body media"; }
 
+/* Gallery-Wrapper löst sich auf: Bild + Thumbs werden direkte Grid-Items der Zeile */
+.show-gallery { display: contents; }
+.show-media, .show-video { grid-area: media; }
+.show-body { grid-area: body; }
+.show-thumbs { grid-area: thumbs; }
 .show-media {
-  flex: 1 1 55%; min-width: 0; position: relative;
+  position: relative;
   border-radius: var(--radius); overflow: hidden; cursor: pointer;
   border: 1px solid var(--line-soft); background: var(--bg-elev);
   aspect-ratio: 4 / 3;
 }
 .show-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease), filter 0.4s; filter: saturate(0.9) brightness(0.85); }
 .show-media:hover img, .show-media:focus-visible img { transform: scale(1.05); filter: saturate(1) brightness(1); }
+
+.show-thumbs { display: flex; flex-wrap: wrap; gap: 8px; }
+.show-thumb {
+  flex: 0 0 76px; aspect-ratio: 4 / 3; padding: 0; margin: 0;
+  border-radius: 8px; overflow: hidden; cursor: pointer;
+  border: 1px solid var(--line-soft); background: var(--bg-elev);
+  transition: border-color 0.2s;
+}
+.show-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) brightness(0.8); transition: filter 0.2s; }
+.show-thumb:hover, .show-thumb:focus-visible { border-color: var(--line); }
+.show-thumb:hover img, .show-thumb:focus-visible img { filter: saturate(1) brightness(1); }
 
 .show-body { flex: 1 1 45%; min-width: 0; }
 .show-body h3.tile-title { font-size: 1.5rem; font-weight: 700; margin: 8px 0 14px; }
@@ -388,19 +420,33 @@ body::before {
 .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: var(--radius); border: 1px solid var(--line); }
 .lightbox .lb-caption { margin-top: 14px; text-align: center; color: var(--ink-soft); font-size: 0.9rem; }
 .lightbox .lb-close { position: absolute; top: 20px; right: 24px; background: none; border: 0; color: var(--ink); font-size: 2rem; cursor: pointer; line-height: 1; }
+.lightbox .lb-prev, .lightbox .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 1;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(20, 16, 12, 0.6); border: 1px solid var(--line-soft); color: var(--ink);
+  font-size: 1.4rem; cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.lightbox .lb-prev { left: 16px; }
+.lightbox .lb-next { right: 16px; }
+.lightbox .lb-prev:hover, .lightbox .lb-next:hover { background: rgba(245, 165, 36, 0.16); border-color: var(--line); }
+.lightbox .lb-prev.lb-nav-hidden, .lightbox .lb-next.lb-nav-hidden { display: none; }
 
 /* =========================================================================
-   Kontakt / Formular
+   Kontakt
    ========================================================================= */
 .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; }
-.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
-.field label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
-.field input, .field textarea {
-  background: var(--bg-elev); border: 1px solid var(--line-soft); border-radius: var(--radius-sm);
-  color: var(--ink); font-family: inherit; font-size: 0.95rem; padding: 12px 14px; transition: border-color 0.2s;
+
+.mail-line {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line-soft);
 }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--amber); }
-.field textarea { min-height: 140px; resize: vertical; }
+.mail-line .addr { font-family: var(--font-mono); font-size: 0.95rem; color: var(--ink); }
+.btn--sm { padding: 8px 14px; font-size: 0.8rem; }
+.btn--sm svg { width: 13px; height: 13px; }
+/* Rückmeldung nach dem Kopieren: heller, aber gleiche Grundform – der Button
+   soll nicht springen. Textfarbe bleibt dunkel, sonst unlesbar auf Amber. */
+#copy-mail.is-copied { background: var(--amber-hi); }
+.mail-note { margin-top: 20px; font-size: 0.82rem; line-height: 1.6; color: var(--ink-faint); max-width: 46ch; }
 
 .contact-info .row { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
 .contact-info .row .ico { color: var(--accent, var(--amber)); flex-shrink: 0; }
@@ -412,7 +458,9 @@ body::before {
 /* =========================================================================
    Footer
    ========================================================================= */
-.site-footer { flex-shrink: 0; border-top: 1px solid var(--line-soft); background: var(--bg-elev); }
+/* transparent, damit unten das teale Umgebungslicht durchscheint statt
+   des warmen bg-elev (das sonst als oranger Schimmer wirkt) */
+.site-footer { flex-shrink: 0; border-top: 1px solid var(--line-soft); background: transparent; }
 .site-footer .inner { max-width: var(--maxw); margin: 0 auto; padding: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .site-footer .brand { font-size: 1rem; }
 .site-footer .meta { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); letter-spacing: 0.03em; }
@@ -459,8 +507,17 @@ body::before {
   .nav-links.open a { flex-direction: row; gap: 10px; padding: 10px 0; align-items: baseline; }
   .nav-toggle { display: grid; place-items: center; }
   .grid--3, .grid--2 { grid-template-columns: 1fr; }
+  /* Porträt auf schmalen Screens über den Werdegang ziehen */
+  .about-portrait { order: -1; }
   .showcase-rows { gap: 48px; }
-  .show-row, .show-row:nth-child(even) { flex-direction: column; gap: 22px; }
+  .show-row, .show-row:nth-child(even) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "media" "body" "thumbs";
+    gap: 22px;
+  }
+  .show-row:not(:has(.show-thumbs)), .show-row:nth-child(even):not(:has(.show-thumbs)) {
+    grid-template-areas: "media" "body";
+  }
   .hero-bg { width: auto; inset: 0; right: auto; }
   .hero-bg img {
     object-position: 62% center;

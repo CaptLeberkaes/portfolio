@@ -27,7 +27,6 @@
     var linksHtml = LINKS.map(function (l) {
       var active = l.page === current ? ' aria-current="page"' : "";
       return '<a href="' + l.href + '"' + active + '>' +
-             '<span class="num">' + l.num + '</span>' +
              '<span data-i18n="' + l.key + '"></span></a>';
     }).join("");
 
@@ -103,6 +102,10 @@
       var v = d[el.getAttribute("data-i18n-aria")];
       if (v != null) el.setAttribute("aria-label", v);
     });
+    document.querySelectorAll("[data-i18n-href]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n-href")];
+      if (v != null) el.setAttribute("href", v);
+    });
     document.documentElement.lang = state.lang;
     document.querySelectorAll(".lang button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang));
@@ -142,7 +145,7 @@
      Rein positionsbasiert — kein Scroll-Listener, kein Scroll-Effekt. */
   function initAccentGradient() {
     var WARM = [245, 165, 36];   // --amber
-    var COOL = [62, 199, 187];   // --teal
+    var COOL = [0, 170, 205];    // gedämpftes Cyan (Richtung 0,221,255)
     var SEL = ".hero, .page-head, main .section, .card, .case, .tl-item, .site-footer";
 
     function lerp(a, b, t) { return Math.round(a + (b - a) * t); }
@@ -170,6 +173,58 @@
     }, { passive: true });
   }
 
+  /* ---------- Showcase: Polaroids bei jedem Aufruf neu streuen ----------
+     Die Positionen im CSS sind der Fallback (ohne JS liegt trotzdem alles
+     ordentlich). Hier werden dieselben neun Ablage-Plätze zufällig auf die
+     Bilder verteilt und zusätzlich leicht verwackelt, damit die Karte bei
+     jedem Seitenaufruf anders aussieht. */
+  function initScatter() {
+    var host = document.querySelector(".card-scatter");
+    if (!host) return;
+    var imgs = Array.prototype.slice.call(host.querySelectorAll("img"));
+    if (!imgs.length) return;
+
+    // Ablage-Plätze: Kanten und Breite in % der Karte, rot in Grad.
+    var SLOTS = [
+      { top:  4, left: 10, w: 24, rot: -17 },
+      { top: 10, left: 33, w: 20, rot:   9 },
+      { top:  2, right: 8, w: 23, rot:  21 },
+      { top: 34, left: 22, w: 22, rot:  -6 },
+      { top: 40, right:14, w: 25, rot:  13 },
+      { top: 30, left:  2, w: 19, rot:   4 },
+      { bottom:  6, left: 14, w: 23, rot: -24 },
+      { bottom:  2, left: 42, w: 21, rot:  16 },
+      { bottom: 10, right: 8, w: 20, rot: -11 }
+    ];
+
+    function shuffle(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+      }
+      return arr;
+    }
+    function jitter(max) { return (Math.random() * 2 - 1) * max; }
+    // nie unter 1% — sonst schneidet der Kartenrand ein Foto glatt ab
+    function pos(v, max) { return v == null ? "auto" : Math.max(1, v + jitter(max)).toFixed(1) + "%"; }
+
+    var slots = shuffle(SLOTS.slice());
+    var layers = shuffle(imgs.map(function (_, i) { return i + 1; }));
+
+    imgs.forEach(function (img, i) {
+      var s = slots[i % slots.length];
+      var st = img.style;
+      // immer alle vier Kanten setzen, sonst bleiben die CSS-Werte stehen
+      st.top    = pos(s.top, 3);
+      st.bottom = pos(s.bottom, 3);
+      st.left   = pos(s.left, 3);
+      st.right  = pos(s.right, 3);
+      st.width  = (s.w + jitter(1.5)).toFixed(1) + "%";
+      st.transform = "rotate(" + (s.rot + jitter(7)).toFixed(1) + "deg)";
+      st.zIndex = layers[i];   // Stapelreihenfolge ebenfalls würfeln
+    });
+  }
+
   /* ---------- Galerie-Filter ---------- */
   function initFilters() {
     var buttons = document.querySelectorAll("[data-filter]");
@@ -195,12 +250,27 @@
     var lb = document.createElement("div");
     lb.className = "lightbox";
     lb.innerHTML = '<button class="lb-close" aria-label="Schließen">×</button>' +
+                   '<button class="lb-prev" aria-label="Vorheriges Bild">‹</button>' +
+                   '<button class="lb-next" aria-label="Nächstes Bild">›</button>' +
                    '<div><img alt=""><div class="lb-caption"></div></div>';
     document.body.appendChild(lb);
     var img = lb.querySelector("img");
     var cap = lb.querySelector(".lb-caption");
+    var prevBtn = lb.querySelector(".lb-prev");
+    var nextBtn = lb.querySelector(".lb-next");
 
-    function open(src, caption) { img.src = src; cap.textContent = caption || ""; lb.classList.add("open"); }
+    var gallery = [];
+    var index = 0;
+
+    function show(i) {
+      index = (i + gallery.length) % gallery.length;
+      img.src = gallery[index].src;
+      cap.textContent = gallery[index].caption || "";
+      var multi = gallery.length > 1;
+      prevBtn.classList.toggle("lb-nav-hidden", !multi);
+      nextBtn.classList.toggle("lb-nav-hidden", !multi);
+    }
+    function open(list, startIndex) { gallery = list; show(startIndex); lb.classList.add("open"); }
     function close() { lb.classList.remove("open"); img.src = ""; }
 
     tiles.forEach(function (t) {
@@ -209,29 +279,77 @@
       function trigger() {
         var scope = t.closest("[data-cat]") || t;
         var titleEl = scope.querySelector(".tile-title");
-        open(t.getAttribute("data-full"), titleEl ? titleEl.textContent : "");
+        var caption = titleEl ? titleEl.textContent : "";
+        var group = Array.prototype.slice.call(scope.querySelectorAll("[data-full]"));
+        var list = group.map(function (g) { return { src: g.getAttribute("data-full"), caption: caption }; });
+        open(list, group.indexOf(t));
       }
       t.addEventListener("click", trigger);
       t.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); trigger(); } });
     });
+    prevBtn.addEventListener("click", function () { show(index - 1); });
+    nextBtn.addEventListener("click", function () { show(index + 1); });
     lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-close")) close(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") show(index - 1);
+      if (e.key === "ArrowRight") show(index + 1);
+    });
   }
 
-  /* ---------- Kontaktformular (Platzhalter) ---------- */
-  function initForm() {
-    var form = document.getElementById("contact-form");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var note = document.getElementById("form-status");
-      if (note) note.hidden = false;
-      form.reset();
+  /* ---------- E-Mail-Adresse kopieren ---------- */
+  function initCopyMail() {
+    var btn = document.getElementById("copy-mail");
+    if (!btn) return;
+    var label = btn.querySelector("span");
+    var timer = null;
+
+    function copy(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      // Fallback für ältere Browser bzw. Seiten ohne HTTPS
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        ok ? resolve() : reject();
+      });
+    }
+
+    btn.addEventListener("click", function () {
+      copy(btn.dataset.copy).then(function () {
+        btn.classList.add("is-copied");
+        label.textContent = dict()["ct.mail.copied"] || "Kopiert";
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          btn.classList.remove("is-copied");
+          label.textContent = dict()["ct.mail.copy"] || "Adresse kopieren";
+        }, 2000);
+      }).catch(function () {
+        // Kopieren blockiert: Adresse markieren, damit man sie selbst kopieren kann
+        var addr = document.querySelector(".mail-line .addr");
+        if (!addr) return;
+        var range = document.createRange();
+        range.selectNodeContents(addr);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      });
     });
   }
 
   /* ---------- Init ---------- */
   document.addEventListener("DOMContentLoaded", function () {
+    initScatter();   // vor dem ersten Paint, damit nichts sichtbar umspringt
     renderNav();
     renderFooter();
     applyI18n();     // nach dem Rendern von Nav/Footer, damit deren Keys greifen
@@ -239,6 +357,6 @@
     initAccentGradient();
     initFilters();
     initLightbox();
-    initForm();
+    initCopyMail();
   });
 })();

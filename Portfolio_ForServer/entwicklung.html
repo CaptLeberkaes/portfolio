@@ -6,17 +6,29 @@
   <title>Entwicklung — Ben</title>
   <meta name="description" content="Maschinensoftware, Web-Tools und Nutzerführung – als Fallstudien, vieles unter NDA.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a08'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%23f5a524' text-anchor='middle'>B</text></svg>">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/site.js" defer></script>
+  <link rel="stylesheet" href="tech/styles.css">
+  <script src="tech/i18n.js"></script>
+  <script src="tech/site.js" defer></script>
 </head>
 <body data-page="showcase">
   <header id="site-nav"></header>
 
   <main>
+    <!-- NOTIZ AN MICH SELBST (nur intern/WIP – vor Live wieder entfernen) -->
+    <div style="max-width:820px;margin:24px auto 0;padding:18px 20px;border:1px solid #f5a524;border-left-width:5px;border-radius:10px;background:rgba(245,165,36,.08);color:#f5efe6;font-size:15px;line-height:1.55">
+      <strong style="display:block;margin-bottom:8px;color:#f5a524">📌 Notiz an mich selbst (später umsetzen) — GitHub &amp; KI-Anteil</strong>
+      Repo ist aktuell komplett privat, vieles KI-gestützt. Öffentlich zeigen? <strong>Ja, aber kuratiert – nicht „alles public".</strong>
+      <ol style="margin:10px 0 0;padding-left:20px">
+        <li>Portfolio-Seite = idealer erster <strong>Public-Repo</strong> (eigene Arbeit, einfache robuste Technik). Hier auf der Entwicklungsseite verlinken → runde Story.</li>
+        <li>Experimente/Halbfertiges bleibt <strong>privat</strong>. Lieber 1–2 saubere Repos mit gutem README als zwanzig halbgare.</li>
+        <li>KI-Anteil <strong>offen framen</strong>, nicht verstecken: „KI-gestützt gearbeitet, aber jede Zeile verstanden &amp; verantwortet" → ist selbst eine Kompetenz. Nicht als handgeschnitztes Werk verkaufen, wenn ich es nicht erklären kann.</li>
+      </ol>
+      <p style="margin:10px 0 0"><strong>Faustregel vor „public":</strong> Kann ich in 5 Min am Whiteboard erklären, warum der Code so aussieht? Ja → public. Nein → erst verstehen oder privat.</p>
+      <p style="margin:10px 0 0"><strong>TODO:</strong> README für Portfolio-Repo entwerfen + KI-Workflow als Stärke texten.</p>
+    </div>
+
     <!-- SEITENKOPF -->
     <section class="page-head">
-      <div class="glow glow--deep" style="width:560px;height:560px;top:-180px;left:-140px"></div>
       <div class="frame">
         <a class="backlink" href="index.php?p=showcase">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
@@ -63,21 +75,134 @@
       </div>
     </section>
 
-    <!-- WIE ICH ARBEITE -->
-    <section class="section">
+    <!-- BILDER-DUMMY (Platzhalter, Aufbau wie in Kreativ) -->
+    <section class="section" style="padding-top:0">
+      <div class="frame">
+        <div class="showcase-rows">
+          <article class="show-row reveal" data-cat="dev">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/programming.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/programming.jpg" alt="Platzhalter Oberfläche" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/work-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-03.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-05.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-05.jpg" alt="" loading="lazy" width="320" height="215">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-03.jpg" alt="" loading="lazy" width="720" height="438">
+                </button>
+              </div>
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="dev.gal.cat"></div>
+              <h3 class="tile-title" data-i18n="dev.gal.title"></h3>
+              <p data-i18n="dev.gal.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="dev.gal.p1"></li>
+                <li data-i18n="dev.gal.p2"></li>
+                <li data-i18n="dev.gal.p3"></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EIGENE PROJEKTE (live & öffentlich; Repos privat) -->
+    <section class="section" style="padding-top:0">
       <div class="frame">
         <div class="reveal" style="max-width:720px;margin-bottom:28px">
-          <h2 class="section-title" data-i18n="dev.proc.title"></h2>
-          <p class="lead" data-i18n="dev.proc.text"></p>
+          <h2 class="section-title">Eigene Projekte — live &amp; öffentlich</h2>
+          <p class="lead">Neben den NDA-Fallstudien: Dinge, die ich selbst gebaut und veröffentlicht habe. Alle live erreichbar. Die Repositories sind aktuell privat — Code gerne auf Anfrage.</p>
         </div>
-        <div class="chips reveal">
-          <span class="chip is-strong">Jira</span>
-          <span class="chip is-strong">Git</span>
-          <span class="chip is-strong">Frontend</span>
-          <span class="chip">UI/UX</span>
-          <span class="chip">Styling</span>
-          <span class="chip">Bugfixing</span>
-          <span class="chip">Code Review</span>
+        <div class="grid grid--2">
+
+          <!-- Portfolio (dieses Projekt) -->
+          <article class="case reveal">
+            <span class="tag">Live · Repo öffentlich</span>
+            <h3>Portfolio-Website</h3>
+            <p>Diese Bewerbungs-Website: statisch, schlank, ohne Framework — Fokus auf Ladezeit, Barrierefreiheit und wartungsarmen Betrieb. Quellcode offen einsehbar.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn--primary btn--sm" href="https://github.com/CaptLeberkaes/portfolio" target="_blank" rel="noopener" title="Quellcode auf GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 4.9 18 5.2 18 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code auf GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- wegzuzler -->
+          <article class="case reveal" style="transition-delay:.08s">
+            <span class="tag">Live · Repo privat</span>
+            <h3>wegzuzler</h3>
+            <p><!-- TODO: eine Zeile Beschreibung --><em style="opacity:.6">— kurze Beschreibung folgt —</em></p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn--primary btn--sm" href="https://www.captleberkaes.de/wegzuzler/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                Live ansehen
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/CaptLeberkaes/wegzuzler" target="_blank" rel="noopener" title="Repository ist privat – Code auf Anfrage">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 4.9 18 5.2 18 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+                GitHub · privat
+              </a>
+            </div>
+          </article>
+
+          <!-- Jonah-Protokoll -->
+          <article class="case reveal" style="transition-delay:.16s">
+            <span class="tag">Live · Repo privat</span>
+            <h3>Jonah-Protokoll</h3>
+            <p><!-- TODO: eine Zeile Beschreibung --><em style="opacity:.6">— kurze Beschreibung folgt —</em></p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn--primary btn--sm" href="https://www.captleberkaes.de/protokoll/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                Live ansehen
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/CaptLeberkaes/JonahProtokoll" target="_blank" rel="noopener" title="Repository ist privat – Code auf Anfrage">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 4.9 18 5.2 18 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+                GitHub · privat
+              </a>
+            </div>
+          </article>
+
+          <!-- KetoPlaner -->
+          <article class="case reveal" style="transition-delay:.24s">
+            <span class="tag">Live · Repo privat</span>
+            <h3>KetoPlaner</h3>
+            <p><!-- TODO: eine Zeile Beschreibung --><em style="opacity:.6">— kurze Beschreibung folgt (Web-App rund um ketogene Ernährung) —</em></p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn--primary btn--sm" href="https://www.captleberkaes.de/ketoPlaner/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                Live ansehen
+              </a>
+              <a class="btn btn--ghost btn--sm" href="https://github.com/CaptLeberkaes/KetoPlaner" target="_blank" rel="noopener" title="Repository ist privat – Code auf Anfrage">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 4.9 18 5.2 18 5.2c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2.1v3.1c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+                GitHub · privat
+              </a>
+            </div>
+          </article>
+
+          <!-- endurensohn Tours (Hobby) -->
+          <article class="case reveal" style="transition-delay:.32s">
+            <span class="tag">Hobby · Live</span>
+            <h3>endurensohn Tours</h3>
+            <p>Private Hobbyseite rund um Enduro-Touren — aus eigenem Antrieb gebaut und veröffentlicht.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <a class="btn btn--primary btn--sm" href="https://www.captleberkaes.de/endurensohnTours/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+                Live ansehen
+              </a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>

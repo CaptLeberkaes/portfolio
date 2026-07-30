@@ -6,9 +6,9 @@
   <title>Kreativ & Visualisierung — Ben</title>
   <meta name="description" content="Produkt- und Architektur-Rendering, Echtzeit & VR und Fotografie.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a08'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%23f5a524' text-anchor='middle'>B</text></svg>">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/site.js" defer></script>
+  <link rel="stylesheet" href="tech/styles.css">
+  <script src="tech/i18n.js"></script>
+  <script src="tech/site.js" defer></script>
 </head>
 <body data-page="showcase">
   <header id="site-nav"></header>
@@ -16,7 +16,6 @@
   <main>
     <!-- SEITENKOPF -->
     <section class="page-head">
-      <div class="glow glow--deep" style="width:560px;height:560px;top:-180px;left:-140px"></div>
       <div class="frame">
         <a class="backlink" href="index.php?p=showcase">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
@@ -64,8 +63,30 @@
           </article>
 
           <article class="show-row reveal" data-cat="produkt">
-            <div class="show-media" data-full="assets/img/work-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
-              <img src="assets/img/work-01.jpg" alt="Platzhalter Visualisierung" loading="lazy" width="900" height="675">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/work-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/work-01.jpg" alt="Platzhalter Visualisierung" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/work-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-03.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/photo-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/photo-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-01.jpg" alt="" loading="lazy" width="640" height="604">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-07.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-07.jpg" alt="" loading="lazy" width="963" height="740">
+                </button>
+              </div>
             </div>
             <div class="show-body">
               <div class="tile-cat" data-i18n="kr.t1.cat"></div>
@@ -80,8 +101,30 @@
           </article>
 
           <article class="show-row reveal" data-cat="produkt">
-            <div class="show-media" data-full="assets/img/work-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
-              <img src="assets/img/work-02.jpg" alt="Platzhalter Produkt-Rendering" loading="lazy" width="900" height="675">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/work-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/work-02.jpg" alt="Platzhalter Produkt-Rendering" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/work-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-03.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/photo-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/me.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/me.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-03.jpg" alt="" loading="lazy" width="720" height="438">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-04.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-04.jpg" alt="" loading="lazy" width="1000" height="1000">
+                </button>
+              </div>
             </div>
             <div class="show-body">
               <div class="tile-cat" data-i18n="kr.t2.cat"></div>
@@ -96,8 +139,30 @@
           </article>
 
           <article class="show-row reveal" data-cat="echtzeit">
-            <div class="show-media" data-full="assets/img/work-03.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
-              <img src="assets/img/work-03.jpg" alt="Platzhalter Echtzeit-Szene" loading="lazy" width="900" height="675">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/work-03.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/work-03.jpg" alt="Platzhalter Echtzeit-Szene" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/work-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/photo-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/programming.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/programming.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-05.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-05.jpg" alt="" loading="lazy" width="320" height="215">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-06.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-06.jpg" alt="" loading="lazy" width="1536" height="1920">
+                </button>
+              </div>
             </div>
             <div class="show-body">
               <div class="tile-cat" data-i18n="kr.t3.cat"></div>
@@ -112,8 +177,30 @@
           </article>
 
           <article class="show-row reveal" data-cat="foto">
-            <div class="show-media" data-full="assets/img/photo-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
-              <img src="assets/img/photo-01.jpg" alt="Platzhalter Fotografie 01" loading="lazy" width="900" height="675">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/photo-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/photo-01.jpg" alt="Platzhalter Fotografie 01" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/photo-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/me.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/me.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-02.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-02.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-08.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-08.jpg" alt="" loading="lazy" width="1300" height="1291">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-02.png" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-02.png" alt="" loading="lazy" width="720" height="668">
+                </button>
+              </div>
             </div>
             <div class="show-body">
               <div class="tile-cat" data-i18n="kr.t4.cat"></div>
@@ -128,8 +215,27 @@
           </article>
 
           <article class="show-row reveal" data-cat="foto">
-            <div class="show-media" data-full="assets/img/photo-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
-              <img src="assets/img/photo-02.jpg" alt="Platzhalter Fotografie 02" loading="lazy" width="900" height="675">
+            <div class="show-gallery">
+              <div class="show-media" data-full="assets/img/photo-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+                <img src="assets/img/photo-02.jpg" alt="Platzhalter Fotografie 02" loading="lazy" width="900" height="675">
+              </div>
+              <div class="show-thumbs">
+                <button type="button" class="show-thumb" data-full="assets/img/photo-01.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/photo-01.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/work-03.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/work-03.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/programming.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/programming.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/me.jpg" aria-label="Bild vergrößern">
+                  <img src="assets/img/me.jpg" alt="" loading="lazy" width="200" height="150">
+                </button>
+                <button type="button" class="show-thumb" data-full="assets/img/asset-09.png" aria-label="Bild vergrößern">
+                  <img src="assets/img/asset-09.png" alt="" loading="lazy" width="864" height="710">
+                </button>
+              </div>
             </div>
             <div class="show-body">
               <div class="tile-cat" data-i18n="kr.t5.cat"></div>
