@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kreativ & Visualisierung — Ben</title>
+  <meta name="description" content="Produkt- und Architektur-Rendering, Echtzeit & VR und Fotografie.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a08'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%23f5a524' text-anchor='middle'>B</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body data-page="showcase">
+  <header id="site-nav"></header>
+
+  <main>
+    <!-- SEITENKOPF -->
+    <section class="page-head">
+      <div class="glow glow--deep" style="width:560px;height:560px;top:-180px;left:-140px"></div>
+      <div class="frame">
+        <a class="backlink" href="index.php?p=showcase">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span data-i18n="kr.back"></span>
+        </a>
+        <span class="eyebrow"><span data-i18n="kr.eyebrow"></span></span>
+        <h1 data-i18n="kr.title"></h1>
+        <p class="lead" data-i18n="kr.lead"></p>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section class="section" style="padding-top:0">
+      <div class="frame">
+        <!-- Filter -->
+        <div class="filters" role="group" aria-label="Filter">
+          <button class="filter" data-filter="all" aria-pressed="true"><span data-i18n="kr.filter.all"></span></button>
+          <button class="filter" data-filter="animation" aria-pressed="false"><span data-i18n="kr.filter.animation"></span></button>
+          <button class="filter" data-filter="produkt" aria-pressed="false"><span data-i18n="kr.filter.produkt"></span></button>
+          <button class="filter" data-filter="echtzeit" aria-pressed="false"><span data-i18n="kr.filter.echtzeit"></span></button>
+          <button class="filter" data-filter="foto" aria-pressed="false"><span data-i18n="kr.filter.foto"></span></button>
+        </div>
+
+        <!-- Versetzte Zeilen: Bild/Video abwechselnd links / rechts, Text daneben -->
+        <div class="showcase-rows">
+          <article class="show-row reveal" data-cat="animation">
+            <div class="show-video">
+              <div class="embed">
+                <iframe src="https://www.youtube-nocookie.com/embed/XMJm2K39uRs"
+                        title="Erklärfilm VON Ardenne — Ben" loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.v1.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.v1.title"></h3>
+              <p data-i18n="kr.v1.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.v1.p1"></li>
+                <li data-i18n="kr.v1.p2"></li>
+                <li data-i18n="kr.v1.p3"></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="show-row reveal" data-cat="produkt">
+            <div class="show-media" data-full="assets/img/work-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+              <img src="assets/img/work-01.jpg" alt="Platzhalter Visualisierung" loading="lazy" width="900" height="675">
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.t1.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.t1.title"></h3>
+              <p data-i18n="kr.t1.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.t1.p1"></li>
+                <li data-i18n="kr.t1.p2"></li>
+                <li data-i18n="kr.t1.p3"></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="show-row reveal" data-cat="produkt">
+            <div class="show-media" data-full="assets/img/work-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+              <img src="assets/img/work-02.jpg" alt="Platzhalter Produkt-Rendering" loading="lazy" width="900" height="675">
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.t2.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.t2.title"></h3>
+              <p data-i18n="kr.t2.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.t2.p1"></li>
+                <li data-i18n="kr.t2.p2"></li>
+                <li data-i18n="kr.t2.p3"></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="show-row reveal" data-cat="echtzeit">
+            <div class="show-media" data-full="assets/img/work-03.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+              <img src="assets/img/work-03.jpg" alt="Platzhalter Echtzeit-Szene" loading="lazy" width="900" height="675">
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.t3.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.t3.title"></h3>
+              <p data-i18n="kr.t3.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.t3.p1"></li>
+                <li data-i18n="kr.t3.p2"></li>
+                <li data-i18n="kr.t3.p3"></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="show-row reveal" data-cat="foto">
+            <div class="show-media" data-full="assets/img/photo-01.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+              <img src="assets/img/photo-01.jpg" alt="Platzhalter Fotografie 01" loading="lazy" width="900" height="675">
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.t4.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.t4.title"></h3>
+              <p data-i18n="kr.t4.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.t4.p1"></li>
+                <li data-i18n="kr.t4.p2"></li>
+                <li data-i18n="kr.t4.p3"></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="show-row reveal" data-cat="foto">
+            <div class="show-media" data-full="assets/img/photo-02.jpg" role="button" tabindex="0" aria-label="Bild vergrößern">
+              <img src="assets/img/photo-02.jpg" alt="Platzhalter Fotografie 02" loading="lazy" width="900" height="675">
+            </div>
+            <div class="show-body">
+              <div class="tile-cat" data-i18n="kr.t5.cat"></div>
+              <h3 class="tile-title" data-i18n="kr.t5.title"></h3>
+              <p data-i18n="kr.t5.desc"></p>
+              <ul class="show-points">
+                <li data-i18n="kr.t5.p1"></li>
+                <li data-i18n="kr.t5.p2"></li>
+                <li data-i18n="kr.t5.p3"></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

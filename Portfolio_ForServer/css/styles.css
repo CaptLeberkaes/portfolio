@@ -55,6 +55,8 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+.text-link { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(245,165,36,0.35); transition: border-color 0.2s, color 0.2s; }
+.text-link:hover { color: var(--amber-hi); border-bottom-color: var(--amber-hi); }
 main { flex: 1 0 auto; }
 
 .frame { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; width: 100%; }
@@ -203,7 +205,8 @@ main { flex: 1 0 auto; }
 .card {
   background: linear-gradient(180deg, var(--bg-elev), var(--bg));
   border: 1px solid var(--line-soft); border-radius: var(--radius);
-  padding: 28px; transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  padding: 28px; text-decoration: none;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .card:hover { border-color: var(--line); transform: translateY(-3px); }
 .card .ico {
@@ -215,6 +218,52 @@ main { flex: 1 0 auto; }
 .card p { color: var(--ink-soft); font-size: 0.94rem; }
 .card .more { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; color: var(--amber); font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; }
 .card .more:hover { gap: 11px; }
+
+/* Showcase-Hub: zwei gleich starke Säulen-Karten */
+.card--hub { padding: 34px; display: flex; flex-direction: column; }
+.card--hub h3 { font-size: 1.5rem; margin-bottom: 12px; }
+.card--hub p { font-size: 1rem; }
+.hub-tags { margin-top: 16px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.03em; color: var(--amber); }
+.card--hub .more { margin-top: auto; padding-top: 22px; }
+
+/* Kreativ-Kachel: gestreute Polaroids im Hintergrund (dezent hinter dem Text) */
+.card--scatter { position: relative; overflow: hidden; }
+.card--scatter > :not(.card-scatter) { position: relative; z-index: 2; }
+.card--scatter h3, .card--scatter p, .card--scatter .hub-tags, .card--scatter .more {
+  text-shadow: 0 1px 8px rgba(0,0,0,0.85);
+}
+.card-scatter { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.card-scatter::after {
+  /* dunkler hinter dem Text (links), rechts scheinen die Fotos durch */
+  content: ""; position: absolute; inset: 0; z-index: 7;
+  background: linear-gradient(100deg,
+    rgba(12,10,8,0.86) 0%, rgba(12,10,8,0.66) 48%, rgba(12,10,8,0.34) 100%);
+}
+.card-scatter img {
+  position: absolute; width: 30%; aspect-ratio: 4 / 3; object-fit: cover;
+  background: #f4efe6; padding: 5px 5px 15px; border-radius: 2px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.55);
+  filter: saturate(0.95);
+}
+.card-scatter img:nth-child(1) { top:  6%; left:  8%; transform: rotate(-12deg); z-index: 2; }
+.card-scatter img:nth-child(2) { top:  2%; left: 34%; transform: rotate(6deg);   z-index: 5; }
+.card-scatter img:nth-child(3) { top:  4%; right: 6%; transform: rotate(-4deg);  z-index: 3; }
+.card-scatter img:nth-child(4) { top: 30%; left: 20%; transform: rotate(8deg);   z-index: 6; }
+.card-scatter img:nth-child(5) { top: 34%; right: 12%; transform: rotate(-9deg); z-index: 4; }
+.card-scatter img:nth-child(6) { top: 28%; left: -2%; transform: rotate(3deg);   z-index: 1; }
+.card-scatter img:nth-child(7) { bottom: 4%; left: 12%; transform: rotate(10deg); z-index: 8; }
+.card-scatter img:nth-child(8) { bottom: 2%; left: 40%; transform: rotate(-6deg); z-index: 9; }
+.card-scatter img:nth-child(9) { bottom: 8%; right: 6%; transform: rotate(5deg);  z-index: 7; }
+
+/* Zurück-Link auf Unterseiten */
+.backlink {
+  display: flex; width: fit-content; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em;
+  color: var(--ink-soft); text-decoration: none; margin-bottom: 22px;
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+}
+.backlink:hover { color: var(--amber); gap: 12px; }
+.backlink svg { width: 14px; height: 14px; }
 
 /* =========================================================================
    Timeline / CV
@@ -242,6 +291,14 @@ main { flex: 1 0 auto; }
 /* =========================================================================
    Showcase-Galerie + Lightbox
    ========================================================================= */
+/* Video-Embed als Galerie-Zelle (responsives 16:9, spielt inline) */
+.show-video { flex: 1 1 55%; min-width: 0; }
+.embed {
+  position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--line-soft); background: var(--bg-elev);
+}
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
 .filter {
   font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.03em;

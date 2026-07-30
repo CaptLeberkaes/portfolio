@@ -6,29 +6,45 @@ im Browser und lässt sich unverändert auf jeden Webserver kopieren.
 
 ## Struktur
 
+Das Repo-Root enthält nur Git-/Projekt-Meta (README, LICENSE, `.gitignore`,
+`.gitattributes`). Die **komplette, deploybare Website** liegt gebündelt im
+Unterordner `Portfolio_ForServer/` — genau dessen Inhalt wird auf den Server
+geladen.
+
 ```
-Portfolio/
-├── index.html          # Landing / Hero (Porträt-Foto)
-├── about.html          # Über mich / Lebenslauf (Timeline + Skills)
-├── showcase.html       # Galerie (3D) + Software-Cases (NDA)
-├── contact.html        # Kontaktformular + Kontaktdaten
-├── assets/
-│   ├── css/styles.css  # komplettes Design-System (Farben/Abstände als Tokens)
-│   ├── js/
-│   │   ├── i18n.js     # ALLE Übersetzungen (DE/EN) — nur hier Text ändern
-│   │   └── site.js     # Nav/Footer, Sprachumschaltung, Filter, Lightbox
-│   └── img/            # Bilder (profile.png + work-*.jpg = Platzhalter)
-├── files/
-│   └── cv-ben.pdf      # Lebenslauf zum Download  ← durch echtes PDF ersetzen
-└── sources/            # Original-Quellbilder (nicht Teil der Website)
+Portfolio/                   # Git-Root (nur Meta-Dateien)
+├── README.md
+├── LICENSE
+├── .gitignore
+├── .gitattributes
+└── Portfolio_ForServer/     # → kompletter Server-Upload
+    ├── index.php            # Auth-Gate + Router (WIP-Schutz, nicht im Git-Ignore)
+    ├── config.php           # Passwort — NICHT im Git (.gitignore), separat hochladen
+    ├── .htaccess            # sperrt Direktaufruf der *.html, DirectoryIndex index.php
+    ├── ratelimit.dat        # Laufzeitdatei des Auth-Gates (gitignored)
+    ├── index.html           # Landing / Hero (Porträt-Foto)
+    ├── about.html           # Über mich / Lebenslauf (Timeline + Skills)
+    ├── showcase.html        # Showcase-Hub (Kreativ | Entwicklung + „Woher ich komme")
+    ├── kreativ.html         # Galerie: Animation/Film, Produkt, Echtzeit/VR, Fotografie
+    ├── entwicklung.html     # Entwicklung: Fallstudien (NDA) + „Wie ich arbeite"
+    ├── contact.html         # Kontaktformular + Kontaktdaten
+    ├── css/
+    │   └── styles.css       # komplettes Design-System (Farben/Abstände als Tokens)
+    └── assets/
+        ├── js/
+        │   ├── i18n.js      # ALLE Übersetzungen (DE/EN) — nur hier Text ändern
+        │   └── site.js      # Nav/Footer, Sprachumschaltung, Filter, Lightbox
+        ├── img/             # Bilder (profile.png + work-*.jpg = Platzhalter)
+        └── files/
+            └── cv-ben.pdf   # Lebenslauf zum Download  ← durch echtes PDF ersetzen
 ```
 
 ## Lokal ansehen
 
-Einfach `index.html` im Browser öffnen — oder mit einem kleinen Server
-(damit relative Pfade & Formular sauber laufen):
+Aus dem Unterordner heraus starten (dort liegt die Website):
 
 ```bash
+cd Portfolio_ForServer
 python -m http.server 8000
 # → http://localhost:8000
 ```
@@ -66,7 +82,7 @@ Alle Farben und Maße sind **Design-Tokens** ganz oben in `styles.css`
 
 ## Noch zu erledigen (Platzhalter ersetzen)
 
-- [ ] `files/cv-ben.pdf` durch echten Lebenslauf ersetzen
+- [ ] `assets/files/cv-ben.pdf` durch echten Lebenslauf ersetzen
 - [ ] `[Nachname]` in `index.html` (Hero) durch echten Namen ersetzen
 - [ ] `assets/img/work-*.jpg` (Testbilder) durch echte 3D-Arbeiten ersetzen
 - [ ] Kontaktformular an Server-Endpunkt anbinden (siehe unten)
@@ -95,6 +111,7 @@ Solange die Seite in Arbeit ist, liegt sie hinter einem Passwort-Gate
 
 **Lokal testen** (mit PHP, dann greift das Gate wie auf dem Server):
 ```bash
+cd Portfolio_ForServer
 php -S 127.0.0.1:8090     # → http://127.0.0.1:8090
 ```
 
@@ -108,9 +125,11 @@ php -S 127.0.0.1:8090     # → http://127.0.0.1:8090
 
 ## Deployment
 
-- **Portfolio** in einen Unterordner `portfolio/` im Webroot des Servers legen
-  (erreichbar unter `…/portfolio/`). Von der Server-Startseite (Goneo-Repo) zeigt
-  der „Portfolio"-Button bereits auf `portfolio/`.
+- **Inhalt von `Portfolio_ForServer/`** in einen Unterordner `portfolio/` im
+  Webroot des Servers legen (erreichbar unter `…/portfolio/`) — den Ordner
+  `Portfolio_ForServer` selbst also nicht mit hochladen, nur seinen Inhalt. Von
+  der Server-Startseite (Goneo-Repo) zeigt der „Portfolio"-Button bereits auf
+  `portfolio/`.
 - `config.php` separat hochladen (ist nicht im Git).
 - Läuft auf Apache mit PHP (wie die übrigen Apps). Ohne aktiven WIP-Schutz genügt
   ein beliebiger Webserver, dann ist keine Laufzeitumgebung nötig.

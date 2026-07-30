@@ -22,10 +22,12 @@ define('RL_WINDOW_SECONDS', 600); // 10 Minuten
 // Whitelist der auslieferbaren Seiten. Kein direkter Dateiname aus der URL →
 // kein Path-Traversal möglich.
 $PAGES = [
-    'home'     => 'index.html',
-    'about'    => 'about.html',
-    'showcase' => 'showcase.html',
-    'contact'  => 'contact.html',
+    'home'        => 'index.html',
+    'about'       => 'about.html',
+    'showcase'    => 'showcase.html',
+    'kreativ'     => 'kreativ.html',
+    'entwicklung' => 'entwicklung.html',
+    'contact'     => 'contact.html',
 ];
 
 /* ---------- Rate-Limit ---------- */
@@ -188,7 +190,7 @@ if ($locked) {
 </head>
 <body>
   <div class="card">
-    <div class="brand">BEN<b>.</b><span class="cursor">_</span></div>
+    <div class="brand">BEN<span class="cursor">_</span></div>
     <h1>Portfolio</h1>
     <p class="sub">In Arbeit – Zugang nur mit Passwort.<br><span class="wip">WIP</span></p>
 

@@ -1,6 +1,35 @@
 # Geheimnisse – NIEMALS ins Repo
 config.php
 
+# Große Medien – gehören NICHT ins Repo, sondern per FTP auf goneo.
+# (Kleine, web-optimierte Bilder in assets/img/ bleiben bewusst getrackt.)
+# Videos
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.m4v
+*.wmv
+*.flv
+# Video-Ordner (dorthin per FTP hochladen, nicht committen)
+# ohne führenden Slash: greift auch im Unterordner Portfolio_ForServer/
+videos/
+assets/videos/
+# Kamera-Rohformate & große Originale
+*.raw
+*.cr2
+*.cr3
+*.nef
+*.arw
+*.dng
+*.orf
+*.raf
+*.rw2
+*.psd
+*.tif
+*.tiff
+
 # Laufzeitdaten des Auth-Gates
 ratelimit.dat
 

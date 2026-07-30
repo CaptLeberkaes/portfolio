@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwicklung — Ben</title>
+  <meta name="description" content="Maschinensoftware, Web-Tools und Nutzerführung – als Fallstudien, vieles unter NDA.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230c0a08'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%23f5a524' text-anchor='middle'>B</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body data-page="showcase">
+  <header id="site-nav"></header>
+
+  <main>
+    <!-- SEITENKOPF -->
+    <section class="page-head">
+      <div class="glow glow--deep" style="width:560px;height:560px;top:-180px;left:-140px"></div>
+      <div class="frame">
+        <a class="backlink" href="index.php?p=showcase">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span data-i18n="dev.back"></span>
+        </a>
+        <span class="eyebrow"><span data-i18n="dev.eyebrow"></span></span>
+        <h1 data-i18n="dev.title"></h1>
+        <p class="lead" data-i18n="dev.lead"></p>
+      </div>
+    </section>
+
+    <!-- FALLSTUDIEN -->
+    <section class="section" style="padding-top:0">
+      <div class="frame">
+        <div class="grid grid--2">
+          <article class="case reveal">
+            <span class="tag" data-i18n="dev.case1.tag"></span>
+            <h3 data-i18n="dev.case1.title"></h3>
+            <p data-i18n="dev.case1.desc"></p>
+            <div class="metrics">
+              <div class="metric"><b data-i18n="dev.case1.m1v"></b><span data-i18n="dev.case1.m1n"></span></div>
+              <div class="metric"><b data-i18n="dev.case1.m2v"></b><span data-i18n="dev.case1.m2n"></span></div>
+            </div>
+          </article>
+          <article class="case reveal" style="transition-delay:.08s">
+            <span class="tag" data-i18n="dev.case2.tag"></span>
+            <h3 data-i18n="dev.case2.title"></h3>
+            <p data-i18n="dev.case2.desc"></p>
+            <div class="metrics">
+              <div class="metric"><b data-i18n="dev.case2.m1v"></b><span data-i18n="dev.case2.m1n"></span></div>
+              <div class="metric"><b data-i18n="dev.case2.m2v"></b><span data-i18n="dev.case2.m2n"></span></div>
+            </div>
+          </article>
+          <article class="case reveal" style="transition-delay:.16s">
+            <span class="tag" data-i18n="dev.case3.tag"></span>
+            <h3 data-i18n="dev.case3.title"></h3>
+            <p data-i18n="dev.case3.desc"></p>
+            <div class="metrics">
+              <div class="metric"><b data-i18n="dev.case3.m1v"></b><span data-i18n="dev.case3.m1n"></span></div>
+              <div class="metric"><b data-i18n="dev.case3.m2v"></b><span data-i18n="dev.case3.m2n"></span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WIE ICH ARBEITE -->
+    <section class="section">
+      <div class="frame">
+        <div class="reveal" style="max-width:720px;margin-bottom:28px">
+          <h2 class="section-title" data-i18n="dev.proc.title"></h2>
+          <p class="lead" data-i18n="dev.proc.text"></p>
+        </div>
+        <div class="chips reveal">
+          <span class="chip is-strong">Jira</span>
+          <span class="chip is-strong">Git</span>
+          <span class="chip is-strong">Frontend</span>
+          <span class="chip">UI/UX</span>
+          <span class="chip">Styling</span>
+          <span class="chip">Bugfixing</span>
+          <span class="chip">Code Review</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

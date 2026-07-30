@@ -34,7 +34,7 @@
     host.className = "nav";
     host.innerHTML =
       '<div class="nav-inner">' +
-        '<a class="brand" href="index.php">BEN<b>.</b><span class="cursor">_</span></a>' +
+        '<a class="brand" href="index.php">BEN<span class="cursor">_</span></a>' +
         '<nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">' + linksHtml + '</nav>' +
         '<div class="nav-right">' +
           '<div class="lang" role="group" aria-label="Sprache">' +
@@ -74,7 +74,7 @@
     host.className = "site-footer";
     host.innerHTML =
       '<div class="inner">' +
-        '<a class="brand" href="index.php" style="text-decoration:none">BEN<b>.</b></a>' +
+        '<a class="brand" href="index.php" style="text-decoration:none">BEN<span class="cursor">_</span></a>' +
         '<div class="links">' +
           LINKS.map(function (l) { return '<a href="' + l.href + '" data-i18n="' + l.key + '"></a>'; }).join("") +
         '</div>' +
