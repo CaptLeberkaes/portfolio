@@ -13,17 +13,42 @@ window.I18N = {
     "foot.rights": "Alle Rechte vorbehalten.",
     "foot.built": "Handgebaut · statisch · schnell",
 
+    /* --- Seiten-Titel & Meta-Beschreibungen (Browser-Tab, Suche, Social) --- */
+    "meta.home.title": "Ben — 3D-Generalist & Software Engineer",
+    "meta.home.desc": "Portfolio von Ben — Industriemechaniker, 3D-Generalist und Softwareentwickler. Werdegang, Werkzeuge und Arbeiten: die Brücke zwischen realer Technik, Visualisierung und Code.",
+    "meta.home.og.desc": "Die Brücke zwischen Maschine und Bild — 3D, Visualisierung und Software.",
+    "meta.showcase.title": "Showcase — Ben",
+    "meta.showcase.desc": "Ausgewählte Arbeiten aus 3D, Visualisierung und Software-Entwicklung.",
+    "meta.creative.title": "Kreativ & Visualisierung — Ben",
+    "meta.creative.desc": "Produkt- und Architektur-Rendering, Echtzeit & VR und Fotografie.",
+    "meta.dev.title": "Entwicklung — Ben",
+    "meta.dev.desc": "Maschinensoftware, Web-Tools und Nutzerführung – als Fallstudien, vieles unter NDA.",
+    "meta.contact.title": "Kontakt — Ben",
+    "meta.contact.desc": "Kontakt aufnehmen — für Projekte, Anstellung oder Fragen.",
+
+    /* --- Bedienelemente & Vorlesehilfen (aria-label, Tooltips) --- */
+    "ui.nav.main": "Hauptnavigation",
+    "ui.nav.lang": "Sprache",
+    "ui.nav.menu": "Menü",
+    "ui.scrollDown": "Nach unten scrollen",
+    "ui.filters": "Filter",
+    "ui.zoom": "Bild vergrößern",
+    "ui.lb.close": "Schließen",
+    "ui.lb.prev": "Vorheriges Bild",
+    "ui.lb.next": "Nächstes Bild",
+
     /* --- gemeinsame Buttons --- */
     "cta.showcase": "Showcase ansehen",
     "cta.cv": "Lebenslauf (PDF)",
     "cta.contact": "Kontakt aufnehmen",
 
     /* --- Landing / Hero --- */
-    "hero.status": "Verfügbar für Projekte",
+    "hero.status": "In Festanstellung",
+    "hero.lastname": "[Nachname]",
     "hero.role": "3D-Generalist & Software Engineer",
     "hero.title.pre": "Die Brücke zwischen ",
     "hero.title.accent": "Maschine und Bild",
-    "hero.lead": "Industriemechaniker, 3D-Generalist und Softwareentwickler. Zwei Jahrzehnte an der Schnittstelle von realer Technik, Visualisierung und Code – ich verstehe die Technik hinter einem Produkt und baue die digitalen Werkzeuge und Bilder, die sie erlebbar machen.",
+    "hero.lead": "Industriemechaniker, 3D-Generalist und Softwareentwickler. Zwei Jahrzehnte an der Schnittstelle von realer Mechanik, Visualisierung und Code – ich verstehe die Technik hinter einem Produkt und baue die digitalen Werkzeuge und Bilder, die sie steuer- und erlebbar machen.",
 
     /* --- Landing: Domänen-Karten --- */
     "home.domains.title": "Was ich mache",
@@ -56,6 +81,14 @@ window.I18N = {
     "about.skills.other": "Allgemein",
     "about.skills.basics": "Heller gesetzte Begriffe: Grundkenntnisse.",
     "about.portrait.alt": "Porträtfoto",
+    /* Chips: nur die deutschsprachigen — Produktnamen (3ds Max, React …) bleiben gleich. */
+    "about.chip.frontend": "Web-Frontend",
+    "about.chip.ai": "KI / AI",
+    "about.chip.configurators": "Konfiguratoren",
+    "about.chip.manufacturing": "Fertigungstechnik",
+    "about.chip.industry": "Industrie",
+    "about.chip.assembly": "Montage",
+    "about.chip.mechanics": "Mechanik",
 
     /* --- Showcase: Hub --- */
     "sc.eyebrow": "Showcase",
@@ -86,6 +119,7 @@ window.I18N = {
     "kr.filter.echtzeit": "Echtzeit & VR",
     "kr.filter.foto": "Fotografie",
     "kr.v1.cat": "Animation & Film · VON Ardenne",
+    "kr.v1.iframe": "Erklärfilm VON Ardenne — Ben",
     "kr.v1.title": "Erklärfilm: Magnetron-Sputtering",
     "kr.v1.desc": "Erklärfilm für VON Ardenne – wie funktioniert Magnetron-Sputtering. Idee, Aussehen, Animation und Schnitt von mir; alle digitalen Inhalte sind mein Werk.",
     "kr.v1.p1": "Konzept, Idee & Storyboard",
@@ -121,6 +155,12 @@ window.I18N = {
     "kr.t5.p1": "Gespür für Moment und Perspektive",
     "kr.t5.p2": "Detail und Schärfe im Fokus",
     "kr.t5.p3": "Konsistente Bildsprache",
+    /* Alt-Texte der Hauptbilder (Platzhalter, bis die echten Bilder da sind) */
+    "kr.t1.alt": "Platzhalter Visualisierung",
+    "kr.t2.alt": "Platzhalter Produkt-Rendering",
+    "kr.t3.alt": "Platzhalter Echtzeit-Szene",
+    "kr.t4.alt": "Platzhalter Fotografie 01",
+    "kr.t5.alt": "Platzhalter Fotografie 02",
 
     /* --- Showcase: Entwicklung-Unterseite --- */
     "dev.eyebrow": "Entwicklung",
@@ -148,6 +188,25 @@ window.I18N = {
     "dev.gal.p1": "Anonymisierte UI-Ausschnitte",
     "dev.gal.p2": "Vorher/Nachher aus dem Frontend",
     "dev.gal.p3": "Wird ergänzt, sobald freigegeben",
+    "dev.gal.alt": "Platzhalter Oberfläche",
+
+    /* --- Entwicklung: eigene Projekte (Projektnamen bleiben unübersetzt) --- */
+    "dev.own.title": "Eigene Projekte — live & öffentlich",
+    "dev.own.lead": "Neben den NDA-Fallstudien: Dinge, die ich selbst gebaut und veröffentlicht habe. Alle live erreichbar. Die Repositories sind aktuell privat — Code gerne auf Anfrage.",
+    "dev.own.tag.public": "Live · Repo öffentlich",
+    "dev.own.tag.private": "Live · Repo privat",
+    "dev.own.tag.hobby": "Hobby · Live",
+    "dev.own.cta.live": "Live ansehen",
+    "dev.own.cta.code": "Code auf GitHub",
+    "dev.own.cta.code.title": "Quellcode auf GitHub",
+    "dev.own.cta.repo": "GitHub · privat",
+    "dev.own.cta.repo.title": "Repository ist privat – Code auf Anfrage",
+    "dev.own.p1.title": "Portfolio-Website",
+    "dev.own.p1.desc": "Diese Bewerbungs-Website: statisch, schlank, ohne Framework — Fokus auf Ladezeit, Barrierefreiheit und wartungsarmen Betrieb. Quellcode offen einsehbar.",
+    "dev.own.p2.desc": "Website, die den persönlichen Fundus an GPX-Strecken übersichtlich anzeigt, optional kuratiert. Ideal für unterwegs.",
+    "dev.own.p3.desc": "Website zum schnellen Erfassen von epileptischen Anfällen",
+    "dev.own.p4.desc": "Website für den vereinfachten Umgang und Zubereitung ketogener Kost",
+    "dev.own.p5.desc": "Private Hobbyseite rund um Enduro-Touren — aus eigenem Antrieb gebaut und veröffentlicht.",
 
     /* --- Contact --- */
     "ct.eyebrow": "Kontakt",
@@ -157,7 +216,6 @@ window.I18N = {
     "ct.mail.href": "mailto:jboforever@gmx.de?subject=Anfrage%20%C3%BCber%20die%20Portfolio-Seite",
     "ct.mail.copy": "Adresse kopieren",
     "ct.mail.copied": "Kopiert",
-    "ct.mail.note": "Der Button öffnet dein Mailprogramm. Wenn du Webmail im Browser nutzt, kopier dir einfach die Adresse.",
     "ct.info.location": "Standort",
     "ct.info.location.v": "Deutschland",
     "ct.info.cv": "Lebenslauf",
@@ -172,11 +230,34 @@ window.I18N = {
     "foot.rights": "All rights reserved.",
     "foot.built": "Handcrafted · static · fast",
 
+    "meta.home.title": "Ben — 3D Generalist & Software Engineer",
+    "meta.home.desc": "Portfolio of Ben — industrial mechanic, 3D generalist and software engineer. Career, tools and work: the bridge between real-world engineering, visualization and code.",
+    "meta.home.og.desc": "The bridge between machine and image — 3D, visualization and software.",
+    "meta.showcase.title": "Showcase — Ben",
+    "meta.showcase.desc": "Selected work from 3D, visualization and software development.",
+    "meta.creative.title": "Creative & Visualization — Ben",
+    "meta.creative.desc": "Product and architectural rendering, real-time & VR and photography.",
+    "meta.dev.title": "Development — Ben",
+    "meta.dev.desc": "Machine software, web tools and user experience – as case studies, much of it under NDA.",
+    "meta.contact.title": "Contact — Ben",
+    "meta.contact.desc": "Get in touch — for projects, a position or questions.",
+
+    "ui.nav.main": "Main navigation",
+    "ui.nav.lang": "Language",
+    "ui.nav.menu": "Menu",
+    "ui.scrollDown": "Scroll down",
+    "ui.filters": "Filters",
+    "ui.zoom": "Enlarge image",
+    "ui.lb.close": "Close",
+    "ui.lb.prev": "Previous image",
+    "ui.lb.next": "Next image",
+
     "cta.showcase": "View showcase",
     "cta.cv": "Résumé (PDF)",
     "cta.contact": "Get in touch",
 
-    "hero.status": "Available for projects",
+    "hero.status": "In permanent position",
+    "hero.lastname": "[last name]",
     "hero.role": "3D Generalist & Software Engineer",
     "hero.title.pre": "The bridge between ",
     "hero.title.accent": "machine and image",
@@ -211,6 +292,13 @@ window.I18N = {
     "about.skills.other": "General",
     "about.skills.basics": "Terms set in lighter type: working knowledge.",
     "about.portrait.alt": "Portrait photo",
+    "about.chip.frontend": "Web frontend",
+    "about.chip.ai": "AI",
+    "about.chip.configurators": "Configurators",
+    "about.chip.manufacturing": "Manufacturing technology",
+    "about.chip.industry": "Industry",
+    "about.chip.assembly": "Assembly",
+    "about.chip.mechanics": "Mechanics",
 
     "sc.eyebrow": "Showcase",
     "sc.title": "Selected Work",
@@ -225,6 +313,9 @@ window.I18N = {
     "sc.past.eyebrow": "Where I come from",
     "sc.past.title": "From machining to software",
     "sc.past.text": "Before 3D and code came the real machine: an apprenticeship in mechanical engineering, commissioning and building huge industrial plants – from the first bolt in the floor to customer sign-off. That feel for material, precision and real engineering underpins every project to this day.",
+    "sc.past.emp.pre": "Most recently at ",
+    "sc.past.emp.link": "GROB",
+    "sc.past.emp.post": " – building and commissioning linear gantry systems, right at the production line.",
 
     /* --- Showcase: Creative sub-page --- */
     "kr.eyebrow": "Creative & Visualization",
@@ -237,6 +328,7 @@ window.I18N = {
     "kr.filter.echtzeit": "Real-time & VR",
     "kr.filter.foto": "Photography",
     "kr.v1.cat": "Animation & Film · VON Ardenne",
+    "kr.v1.iframe": "Explainer film VON Ardenne — Ben",
     "kr.v1.title": "Explainer: magnetron sputtering",
     "kr.v1.desc": "Explainer film for VON Ardenne – how magnetron sputtering works. Concept, look, animation and editing by me; all digital content is my own work.",
     "kr.v1.p1": "Concept, idea & storyboard",
@@ -272,6 +364,11 @@ window.I18N = {
     "kr.t5.p1": "A feel for moment and perspective",
     "kr.t5.p2": "Detail and sharpness in focus",
     "kr.t5.p3": "Consistent visual language",
+    "kr.t1.alt": "Placeholder visualization",
+    "kr.t2.alt": "Placeholder product rendering",
+    "kr.t3.alt": "Placeholder real-time scene",
+    "kr.t4.alt": "Placeholder photography 01",
+    "kr.t5.alt": "Placeholder photography 02",
 
     /* --- Showcase: Development sub-page --- */
     "dev.eyebrow": "Development",
@@ -299,6 +396,25 @@ window.I18N = {
     "dev.gal.p1": "Anonymised UI excerpts",
     "dev.gal.p2": "Before/after from the frontend",
     "dev.gal.p3": "Added once cleared for sharing",
+    "dev.gal.alt": "Placeholder interface",
+
+    /* --- Development: own projects (project names stay untranslated) --- */
+    "dev.own.title": "Own projects — live & public",
+    "dev.own.lead": "Alongside the NDA case studies: things I built and shipped myself. All of them live. The repositories are private for now — code available on request.",
+    "dev.own.tag.public": "Live · repo public",
+    "dev.own.tag.private": "Live · repo private",
+    "dev.own.tag.hobby": "Hobby · live",
+    "dev.own.cta.live": "View live",
+    "dev.own.cta.code": "Code on GitHub",
+    "dev.own.cta.code.title": "Source code on GitHub",
+    "dev.own.cta.repo": "GitHub · private",
+    "dev.own.cta.repo.title": "Repository is private – code on request",
+    "dev.own.p1.title": "Portfolio website",
+    "dev.own.p1.desc": "This portfolio site: static, lean, no framework — focused on load time, accessibility and low-maintenance operation. Source code openly available.",
+    "dev.own.p2.desc": "— short description to follow —",
+    "dev.own.p3.desc": "— short description to follow —",
+    "dev.own.p4.desc": "— short description to follow (web app around the ketogenic diet) —",
+    "dev.own.p5.desc": "Private hobby site about enduro tours — built and published off my own bat.",
 
     "ct.eyebrow": "Contact",
     "ct.title": "Let's talk",
@@ -307,7 +423,6 @@ window.I18N = {
     "ct.mail.href": "mailto:jboforever@gmx.de?subject=Enquiry%20via%20your%20portfolio%20site",
     "ct.mail.copy": "Copy address",
     "ct.mail.copied": "Copied",
-    "ct.mail.note": "The button opens your mail app. If you use webmail in your browser, just copy the address.",
     "ct.info.location": "Location",
     "ct.info.location.v": "Germany",
     "ct.info.cv": "Résumé",

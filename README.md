@@ -22,18 +22,16 @@ Portfolio/                   # Git-Root (nur Meta-Dateien)
     ├── config.php           # Passwort — NICHT im Git (.gitignore), separat hochladen
     ├── .htaccess            # sperrt Direktaufruf der *.html, DirectoryIndex index.php
     ├── ratelimit.dat        # Laufzeitdatei des Auth-Gates (gitignored)
-    ├── index.html           # Landing / Hero (Porträt-Foto)
-    ├── about.html           # Über mich / Lebenslauf (Timeline + Skills)
+    ├── index.html           # Landing / Hero + Werdegang + Skills
     ├── showcase.html        # Showcase-Hub (Kreativ | Entwicklung + „Woher ich komme")
-    ├── kreativ.html         # Galerie: Animation/Film, Produkt, Echtzeit/VR, Fotografie
-    ├── entwicklung.html     # Entwicklung: Fallstudien (NDA) + „Wie ich arbeite"
-    ├── contact.html         # Kontaktformular + Kontaktdaten
-    ├── css/
-    │   └── styles.css       # komplettes Design-System (Farben/Abstände als Tokens)
+    ├── creative.html        # Galerie: Animation/Film, Produkt, Echtzeit/VR, Fotografie
+    ├── development.html     # Entwicklung: Fallstudien (NDA) + eigene Projekte
+    ├── contact.html         # Kontaktdaten (Mail-Button, kein Formular)
+    ├── tech/
+    │   ├── styles.css       # komplettes Design-System (Farben/Abstände als Tokens)
+    │   ├── i18n.js          # ALLE Übersetzungen (DE/EN) — nur hier Text ändern
+    │   └── site.js          # Nav/Footer, Sprachumschaltung, Filter, Lightbox
     └── assets/
-        ├── js/
-        │   ├── i18n.js      # ALLE Übersetzungen (DE/EN) — nur hier Text ändern
-        │   └── site.js      # Nav/Footer, Sprachumschaltung, Filter, Lightbox
         ├── img/             # Bilder (profile.png + work-*.jpg = Platzhalter)
         └── files/
             └── cv-ben.pdf   # Lebenslauf zum Download  ← durch echtes PDF ersetzen
@@ -61,19 +59,24 @@ python -m http.server 8000
 1. Bild nach `assets/img/` legen (ideal als **WebP/AVIF**, dunkel, ~1600px breit).
 2. In `showcase.html` eine `.tile` kopieren und `src` / `data-full` / Kategorie
    (`data-cat="3d|software|interactive"`) anpassen.
-3. Titel/Text als Key in `assets/js/i18n.js` ergänzen (DE **und** EN).
+3. Titel/Text als Key in `tech/i18n.js` ergänzen (DE **und** EN).
 
 ## Übersetzungen (DE/EN)
 
 Aktueller Standard-Ansatz: **Text getrennt vom Markup**.
 - Im HTML steht nur ein Schlüssel: `data-i18n="hero.role"`.
-- Der echte Text liegt in `assets/js/i18n.js` — pro Sprache ein Block.
+- Der echte Text liegt in `tech/i18n.js` — pro Sprache ein Block.
 - `site.js` setzt beim Laden und beim Umschalten den passenden Text; die Wahl
   wird im Browser gespeichert (`localStorage`).
+- Fehlt ein Key in der aktiven Sprache, greift automatisch Deutsch als Rückfall.
 - **Neue Sprache** = neuer Block in `i18n.js` + Eintrag in der `LINKS`-Sprachleiste.
 
 Attribute werden über Zusatz-Keys übersetzt: `data-i18n-placeholder`,
-`data-i18n-alt`, `data-i18n-aria`.
+`data-i18n-alt`, `data-i18n-aria`, `data-i18n-href`, `data-i18n-title` (Tooltip /
+`<iframe title>`) und `data-i18n-content` (`<meta name="description">`, `og:*`).
+Der Seitentitel hängt am `<title>`-Element selbst (`data-i18n="meta.*.title"`);
+dort und bei den `<meta>`-Tags bleibt der deutsche Text zusätzlich im Markup
+stehen, damit Crawler ohne JS etwas Sinnvolles sehen.
 
 ## Farben / Design anpassen
 
@@ -101,7 +104,8 @@ Solange die Seite in Arbeit ist, liegt sie hinter einem Passwort-Gate
 (Mechanik wie beim WegZuzler): PHP-Cookie-Login mit Rate-Limit.
 
 - `index.php` — Login-Formular **und** Seiten-Router. Nach dem Login liefert es
-  die angeforderte Seite aus (`?p=about|showcase|contact`, Standard: Landing).
+  die angeforderte Seite aus (`?p=showcase|creative|development|contact`,
+  Standard: Landing). Die Schlüssel stehen in der Whitelist `$PAGES`.
 - `config.php` — enthält das Passwort. **Nicht im Git** (`.gitignore`), muss beim
   Deployment separat auf den Server geladen werden.
 - `.htaccess` — sperrt den Direktaufruf der `*.html` (Zugang nur übers Gate);
@@ -117,10 +121,11 @@ php -S 127.0.0.1:8090     # → http://127.0.0.1:8090
 
 ### Schutz später entfernen (wenn die Seite live gehen soll)
 1. `index.php`, `config.php`, `.htaccess`, `ratelimit.dat` löschen.
-2. In `assets/js/site.js` die `LINKS`-`href` und die beiden Brand-Links wieder auf
-   `index.html` / `about.html` / `showcase.html` / `contact.html` zurücksetzen.
-3. In `index.html` (`index.php?p=showcase`) und `about.html` (`index.php?p=contact`)
-   die Links auf die `.html`-Dateien zurückstellen.
+2. In `tech/site.js` die `LINKS`-`href` und die beiden Brand-Links wieder auf
+   `index.html` / `showcase.html` / `contact.html` zurücksetzen.
+3. Alle `index.php?p=…`-Links in den HTML-Seiten auf die passende `.html`-Datei
+   zurückstellen (`?p=creative` → `creative.html`, `?p=development` →
+   `development.html` usw.).
 → Danach ist es wieder eine reine statische Seite ohne PHP.
 
 ## Deployment

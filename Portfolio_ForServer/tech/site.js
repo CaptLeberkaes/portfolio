@@ -33,13 +33,13 @@
     host.innerHTML =
       '<div class="nav-inner">' +
         '<a class="brand" href="index.php">BEN<span class="cursor">_</span></a>' +
-        '<nav class="nav-links" id="nav-links" aria-label="Hauptnavigation">' + linksHtml + '</nav>' +
+        '<nav class="nav-links" id="nav-links" data-i18n-aria="ui.nav.main">' + linksHtml + '</nav>' +
         '<div class="nav-right">' +
-          '<div class="lang" role="group" aria-label="Sprache">' +
+          '<div class="lang" role="group" data-i18n-aria="ui.nav.lang">' +
             '<button data-lang="de" aria-pressed="true">DE</button>' +
             '<button data-lang="en" aria-pressed="false">EN</button>' +
           '</div>' +
-          '<button class="nav-toggle" id="nav-toggle" aria-label="Menü" aria-expanded="false">☰</button>' +
+          '<button class="nav-toggle" id="nav-toggle" data-i18n-aria="ui.nav.menu" aria-expanded="false">☰</button>' +
         '</div>' +
       '</div>';
 
@@ -83,27 +83,36 @@
   /* ---------- i18n ---------- */
   function dict() { return (window.I18N && window.I18N[state.lang]) || {}; }
 
-  function applyI18n() {
+  // Fehlt ein Key in der aktiven Sprache, greift Deutsch als Rückfall —
+  // besser ein deutscher Text als ein leeres Element.
+  function t(key) {
     var d = dict();
+    if (d[key] != null) return d[key];
+    var de = (window.I18N && window.I18N.de) || {};
+    return de[key] != null ? de[key] : null;
+  }
+
+  // Attribut-Varianten: data-i18n-<suffix> setzt das jeweilige Attribut.
+  var ATTRS = {
+    "data-i18n-placeholder": "placeholder",
+    "data-i18n-alt":         "alt",
+    "data-i18n-aria":        "aria-label",
+    "data-i18n-href":        "href",
+    "data-i18n-title":       "title",     // Tooltip / iframe-Titel
+    "data-i18n-content":     "content"    // <meta name="description"> & og:*
+  };
+
+  function applyI18n() {
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n")];
+      var v = t(el.getAttribute("data-i18n"));
       if (v != null) el.textContent = v;
     });
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n-placeholder")];
-      if (v != null) el.setAttribute("placeholder", v);
-    });
-    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n-alt")];
-      if (v != null) el.setAttribute("alt", v);
-    });
-    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n-aria")];
-      if (v != null) el.setAttribute("aria-label", v);
-    });
-    document.querySelectorAll("[data-i18n-href]").forEach(function (el) {
-      var v = d[el.getAttribute("data-i18n-href")];
-      if (v != null) el.setAttribute("href", v);
+    Object.keys(ATTRS).forEach(function (dataAttr) {
+      var target = ATTRS[dataAttr];
+      document.querySelectorAll("[" + dataAttr + "]").forEach(function (el) {
+        var v = t(el.getAttribute(dataAttr));
+        if (v != null) el.setAttribute(target, v);
+      });
     });
     document.documentElement.lang = state.lang;
     document.querySelectorAll(".lang button").forEach(function (b) {
@@ -248,9 +257,9 @@
 
     var lb = document.createElement("div");
     lb.className = "lightbox";
-    lb.innerHTML = '<button class="lb-close" aria-label="Schließen">×</button>' +
-                   '<button class="lb-prev" aria-label="Vorheriges Bild">‹</button>' +
-                   '<button class="lb-next" aria-label="Nächstes Bild">›</button>' +
+    lb.innerHTML = '<button class="lb-close" data-i18n-aria="ui.lb.close">×</button>' +
+                   '<button class="lb-prev" data-i18n-aria="ui.lb.prev">‹</button>' +
+                   '<button class="lb-next" data-i18n-aria="ui.lb.next">›</button>' +
                    '<div><img alt=""><div class="lb-caption"></div></div>';
     document.body.appendChild(lb);
     var img = lb.querySelector("img");
@@ -327,11 +336,11 @@
     btn.addEventListener("click", function () {
       copy(btn.dataset.copy).then(function () {
         btn.classList.add("is-copied");
-        label.textContent = dict()["ct.mail.copied"] || "Kopiert";
+        label.textContent = t("ct.mail.copied") || "Kopiert";
         clearTimeout(timer);
         timer = setTimeout(function () {
           btn.classList.remove("is-copied");
-          label.textContent = dict()["ct.mail.copy"] || "Adresse kopieren";
+          label.textContent = t("ct.mail.copy") || "Adresse kopieren";
         }, 2000);
       }).catch(function () {
         // Kopieren blockiert: Adresse markieren, damit man sie selbst kopieren kann
@@ -351,11 +360,11 @@
     initScatter();   // vor dem ersten Paint, damit nichts sichtbar umspringt
     renderNav();
     renderFooter();
-    applyI18n();     // nach dem Rendern von Nav/Footer, damit deren Keys greifen
-    initReveal();
-    initAccentGradient();
     initFilters();
     initLightbox();
     initCopyMail();
+    applyI18n();     // erst wenn das gesamte DOM steht (Nav, Footer, Lightbox)
+    initReveal();
+    initAccentGradient();   // misst Höhen — nach dem Setzen der Texte
   });
 })();

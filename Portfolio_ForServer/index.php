@@ -24,8 +24,8 @@ define('RL_WINDOW_SECONDS', 600); // 10 Minuten
 $PAGES = [
     'home'        => 'index.html',
     'showcase'    => 'showcase.html',
-    'kreativ'     => 'kreativ.html',
-    'entwicklung' => 'entwicklung.html',
+    'creative'    => 'creative.html',
+    'development' => 'development.html',
     'contact'     => 'contact.html',
 ];
 
