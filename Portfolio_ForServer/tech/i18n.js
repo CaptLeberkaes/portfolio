@@ -7,7 +7,6 @@ window.I18N = {
   de: {
     /* --- Navigation / Footer --- */
     "nav.home": "start",
-    "nav.about": "über mich",
     "nav.showcase": "showcase",
     "nav.contact": "kontakt",
     "foot.tagline": "Engineering & Visualisierung",
@@ -24,12 +23,7 @@ window.I18N = {
     "hero.role": "3D-Generalist & Software Engineer",
     "hero.title.pre": "Die Brücke zwischen ",
     "hero.title.accent": "Maschine und Bild",
-    "hero.lead": "Industriemechaniker, 3D-Generalist und Softwareentwickler. Zwei Jahrzehnte an der Schnittstelle von realer Technik, Visualisierung und Code.",
-
-    /* --- Landing: Intro --- */
-    "home.intro.eyebrow": "Kurz gesagt",
-    "home.intro.title": "Ein Profil, das selten zusammenkommt.",
-    "home.intro.text": "Vom Handwerk an der Maschine über 3D-Kunst und Echtzeit-Visualisierung bis zur Softwareentwicklung. Ich verstehe die reale Technik hinter einem Produkt – und baue die digitalen Werkzeuge und Bilder, die sie erlebbar machen.",
+    "hero.lead": "Industriemechaniker, 3D-Generalist und Softwareentwickler. Zwei Jahrzehnte an der Schnittstelle von realer Technik, Visualisierung und Code – ich verstehe die Technik hinter einem Produkt und baue die digitalen Werkzeuge und Bilder, die sie erlebbar machen.",
 
     /* --- Landing: Domänen-Karten --- */
     "home.domains.title": "Was ich mache",
@@ -44,8 +38,6 @@ window.I18N = {
     /* --- About --- */
     "about.eyebrow": "Über mich",
     "about.title": "Werdegang & Profil",
-    "about.lead": "Ein Weg vom realen Handwerk über die visuelle Gestaltung bis zur Software – jede Station baut auf der vorigen auf.",
-    "about.cv.title": "Werdegang",
     "about.tl1.when": "Heute · seit 2018",
     "about.tl1.role": "Softwareentwickler & 3D-Generalist",
     "about.tl1.desc": "Software-Entwicklung parallel zu 3D, Visualisierung, VR, Unreal Engine und KI-Anwendung. Verbindung von Technik und Bild in produktiven Werkzeugen.",
@@ -174,7 +166,6 @@ window.I18N = {
 
   en: {
     "nav.home": "home",
-    "nav.about": "about",
     "nav.showcase": "showcase",
     "nav.contact": "contact",
     "foot.tagline": "Engineering & Visualization",
@@ -189,11 +180,7 @@ window.I18N = {
     "hero.role": "3D Generalist & Software Engineer",
     "hero.title.pre": "The bridge between ",
     "hero.title.accent": "machine and image",
-    "hero.lead": "Industrial mechanic, 3D generalist and software engineer. Two decades at the intersection of real-world engineering, visualization and code.",
-
-    "home.intro.eyebrow": "In short",
-    "home.intro.title": "A profile that rarely comes together.",
-    "home.intro.text": "From hands-on machining through 3D art and real-time visualization to software development. I understand the real engineering behind a product – and build the digital tools and images that bring it to life.",
+    "hero.lead": "Industrial mechanic, 3D generalist and software engineer. Two decades at the intersection of real-world engineering, visualization and code – I understand the engineering behind a product and build the digital tools and images that bring it to life.",
 
     "home.domains.title": "What I do",
     "home.d1.title": "Creative & Visualization",
@@ -206,8 +193,6 @@ window.I18N = {
 
     "about.eyebrow": "About me",
     "about.title": "Career & Profile",
-    "about.lead": "A path from real craftsmanship through visual design to software – each stage builds on the last.",
-    "about.cv.title": "Career",
     "about.tl1.when": "Today · since 2018",
     "about.tl1.role": "Software Engineer & 3D Generalist",
     "about.tl1.desc": "Software development alongside 3D, visualization, VR, Unreal Engine and applied AI. Connecting engineering and image in productive tools.",

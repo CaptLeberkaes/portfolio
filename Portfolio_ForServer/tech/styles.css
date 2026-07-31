@@ -155,13 +155,15 @@ body::before {
   letter-spacing: 0.01em; text-wrap: balance; margin-bottom: 18px;
 }
 .lead { color: var(--ink-soft); font-size: 1.05rem; max-width: 60ch; }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .section { padding: clamp(72px, 10vw, 130px) 0; position: relative; }
 .section + .section { border-top: 1px solid var(--line-soft); }
 #domains { padding-top: clamp(40px, 5vw, 64px); }
 #domains .section-title { margin-bottom: 48px; }
-body[data-page="showcase"] .section + .section,
-body[data-page="about"] .section + .section { border-top: none; }
+body[data-page="showcase"] .section + .section { border-top: none; }
+/* Werdegang und Werkzeuge gehören zusammen – dazwischen keine Trennlinie */
+#skills { border-top: none; }
 
 /* =========================================================================
    HERO (Landing)
@@ -197,7 +199,6 @@ body[data-page="about"] .section + .section { border-top: none; }
   letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent, var(--amber)); margin-bottom: 28px;
 }
 .hero .lead { margin-bottom: 36px; }
-.hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .scroll-cue {
   position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); z-index: 3;
@@ -507,8 +508,6 @@ body[data-page="about"] .section + .section { border-top: none; }
   .nav-links.open a { flex-direction: row; gap: 10px; padding: 10px 0; align-items: baseline; }
   .nav-toggle { display: grid; place-items: center; }
   .grid--3, .grid--2 { grid-template-columns: 1fr; }
-  /* Porträt auf schmalen Screens über den Werdegang ziehen */
-  .about-portrait { order: -1; }
   .showcase-rows { gap: 48px; }
   .show-row, .show-row:nth-child(even) {
     grid-template-columns: 1fr;

@@ -23,7 +23,6 @@ define('RL_WINDOW_SECONDS', 600); // 10 Minuten
 // kein Path-Traversal möglich.
 $PAGES = [
     'home'        => 'index.html',
-    'about'       => 'about.html',
     'showcase'    => 'showcase.html',
     'kreativ'     => 'kreativ.html',
     'entwicklung' => 'entwicklung.html',

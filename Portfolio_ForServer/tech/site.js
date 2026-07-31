@@ -12,9 +12,8 @@
   // aktiv ist. Fällt der Schutz später weg, hier auf "*.html" zurückstellen.
   var LINKS = [
     { href: "index.php",            key: "nav.home",     page: "home",     num: "01" },
-    { href: "index.php?p=about",    key: "nav.about",    page: "about",    num: "02" },
-    { href: "index.php?p=showcase", key: "nav.showcase", page: "showcase", num: "03" },
-    { href: "index.php?p=contact",  key: "nav.contact",  page: "contact",  num: "04" }
+    { href: "index.php?p=showcase", key: "nav.showcase", page: "showcase", num: "02" },
+    { href: "index.php?p=contact",  key: "nav.contact",  page: "contact",  num: "03" }
   ];
 
   var current = document.body.getAttribute("data-page") || "home";
